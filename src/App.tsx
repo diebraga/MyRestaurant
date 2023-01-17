@@ -1,25 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from "native-base";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box
+      justifyContent="center" // bg="primary.500"
+      _text={{
+        fontSize: "md",
+        fontWeight: "medium",
+        color: "warmGray.50",
+        letterSpacing: "lg",
+      }}
+      bg={["red.400", "blue.400"]}
+    >
+      This is a Box
+    </Box>
   );
 }
 
