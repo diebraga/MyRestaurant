@@ -1,19 +1,13 @@
-import { Box } from "native-base";
+import { Flex } from "native-base";
+import { Home } from "./pages/Home/Home";
 
 function App() {
   return (
-    <Box
-      justifyContent="center" // bg="primary.500"
-      _text={{
-        fontSize: "md",
-        fontWeight: "medium",
-        color: "warmGray.50",
-        letterSpacing: "lg",
-      }}
-      bg={["red.400", "blue.400"]}
-    >
-      This is a Box
-    </Box>
+    <Flex width="100%" bg="red.100" minHeight="100vh" alignItems="center">
+      <Flex maxWidth="650px" flexDir="column" bg="amber.300" width="100%">
+        <Home />
+      </Flex>
+    </Flex>
   );
 }
 
