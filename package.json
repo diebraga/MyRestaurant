@@ -25,10 +25,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:coverage": "jest --coverage",
-    "test:coverage:watch": "jest --coverage --watch",
-    "test:watch": "jest --watch-all",
-    "test:changed": "jest --watchAll=false --coverage --changedSince origin/develop || (echo 'Error: Unit tests failed' && exit 1)"
+    "test:coverage": "react-scripts test --coverage",
+    "test:coverage:watch": "react-scripts test --coverage --watch",
+    "test:watch": "react-scripts test --watch-all",
+    "test:changed": "react-scripts test --watchAll=false --coverage --changedSince origin/develop || (echo 'Error: Unit tests failed' && exit 1)"
   },
   "eslintConfig": {
     "extends": [

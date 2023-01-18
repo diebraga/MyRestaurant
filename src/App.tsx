@@ -1,13 +1,17 @@
-import { Flex } from "native-base";
 import { Home } from "./pages/Home/Home";
+import { Layout } from "./components/Layout/Layout";
+
+const homeTitle = "MENU";
+const homeOptons = [
+  { title: "Food", id: "1" },
+  { title: "Beers", id: "2" },
+];
 
 function App() {
   return (
-    <Flex width="100%" minHeight="100vh" alignItems="center">
-      <Flex maxWidth="650px" flexDir="column" width="100%">
-        <Home />
-      </Flex>
-    </Flex>
+    <Layout>
+      <Home options={homeOptons} title={homeTitle} />
+    </Layout>
   );
 }
 
