@@ -1,25 +1,9 @@
-import {
-  Avatar,
-  Box,
-  Center,
-  Flex,
-  HStack,
-  Heading,
-  Image,
-  Stack,
-  Text,
-} from "native-base";
+import { Avatar, Column, Flex, HStack, Heading, Stack, Text } from "native-base";
 import React from "react";
 
 const ScreenItem: React.FC = () => {
   return (
-    <Stack
-      direction={["row"]}
-      rounded="lg"
-      overflow="hidden"
-      width={["100%"]}
-      shadow="1"
-    >
+    <Stack direction={["row"]} rounded="lg" overflow="hidden" width={["100%"]}>
       <Flex justify="center" bg="blue.100">
         <Avatar
           source={{
@@ -28,26 +12,27 @@ const ScreenItem: React.FC = () => {
           size="xl"
         />
       </Flex>
-      <Stack flex="1" p="1" space={[3, 3, 1.5]} justifyContent="space-around">
-        <Stack space="2">
+      <Stack
+        flex="1"
+        padding="1"
+        marginLeft="1"
+        space={[3, 3, 1.5]}
+        justifyContent="space-around"
+      >
+        <Stack>
           <Heading size="sm" ml="-1">
             The Garden City
           </Heading>
+          <Text fontWeight="400">
+            Bengaluru (also called Bangalore) is the center of India's
+            high-tech.
+          </Text>
         </Stack>
-        <Text fontWeight="400">
-          Bengaluru (also called Bangalore) is the center of India's high-tech
-          industry.
-        </Text>
-        <Text
-          color="coolGray.600"
-          _dark={{
-            color: "warmGray.200",
-          }}
-          fontWeight="400"
-          fontSize="sm"
-        >
-          6 mins ago
-        </Text>
+        <Flex marginLeft="0" bg="red.100">
+          <Text color="coolGray.600" fontWeight="400" fontSize="sm">
+            $40
+          </Text>
+        </Flex>
       </Stack>
     </Stack>
   );
