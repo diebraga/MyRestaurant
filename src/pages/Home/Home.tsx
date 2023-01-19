@@ -20,6 +20,7 @@ export type HomeProps = {
 
 const Home: React.FC = () => {
   return (
+    <>
     <Column
       width="100%"
       alignItems="center"
@@ -44,8 +45,9 @@ const Home: React.FC = () => {
           </Button>
         );
       })}
-      {homeOptons.map((option) => <Screen key={option.id} {...option} />) || {}}
     </Column>
+    {homeOptons.map((option) => <Screen key={option.id} {...option} />) || {}}
+    </>
   );
 };
 
