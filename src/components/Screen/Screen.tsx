@@ -1,5 +1,6 @@
 import { Column, Heading } from "native-base";
 import React from "react";
+import { ScreenItem } from "./components/ScreenItem";
 
 export type ScreenProps = {
   title: string
@@ -18,6 +19,7 @@ const Screen: React.FC<ScreenProps> = ({ title }) => {
       <Heading fontWeight="medium" fontSize={["4xl"]} color="primary.500">
         {title}
       </Heading>
+      <ScreenItem />
     </Column>
   );
 };

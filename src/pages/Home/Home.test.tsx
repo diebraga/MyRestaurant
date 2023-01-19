@@ -3,7 +3,7 @@ import { Home, HomeProps } from "./Home";
 
 const homeTitleMock = "MENU";
 const homeOptonsMock = [
-  { title: "Food", id: "1" },
+  { title: "Coffees", id: "1" },
   { title: "Beers", id: "2" },
 ];
 
