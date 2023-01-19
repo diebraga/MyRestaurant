@@ -6,7 +6,7 @@ const homeTitleMock = "Screen";
 
 const mockHome = <Text>{homeTitleMock}</Text>;
 
-jest.mock("../../components/Screen/Screen", () => {
+jest.mock("./components/Screen/Screen", () => {
   return {
     Screen: () => mockHome,
   };

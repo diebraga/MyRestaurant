@@ -1,7 +1,7 @@
 import { Avatar, Column, Flex, HStack, Heading, Stack, Text } from "native-base";
 import React from "react";
 
-const ScreenItem: React.FC = () => {
+const ScreenItem: React.FC = ({}) => {
   return (
     <Stack direction={["row"]} rounded="lg" overflow="hidden" width={["100%"]}>
       <Flex justify="center" bg="blue.100">

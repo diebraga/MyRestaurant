@@ -1,4 +1,4 @@
-import { renderWithProvider, screen } from "../../test";
+import { renderWithProvider, screen } from "../../../../test";
 import { Screen, ScreenProps } from "./Screen";
 
 const mockScreenProps = {

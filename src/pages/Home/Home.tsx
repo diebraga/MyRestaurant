@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Column, Heading } from "native-base";
-import { Screen } from "../../components/Screen/Screen";
+import { Screen } from "./components/Screen/Screen";
 
 const homeTitle = "MENU";
 const homeOptons = [
@@ -44,9 +44,7 @@ const Home: React.FC = () => {
           </Button>
         );
       })}
-      {homeOptons.map((option) => (
-        <Screen key={option.id} {...option} />
-      ))}
+      {homeOptons.map((option) => <Screen key={option.id} {...option} />) || {}}
     </Column>
   );
 };
