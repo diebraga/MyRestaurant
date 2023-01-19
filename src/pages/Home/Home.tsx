@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Column, Flex, HStack, Heading, VStack } from "native-base";
+import { Button, Column, Heading } from "native-base";
 
 type Option = {
   title: string;
@@ -13,14 +13,15 @@ export type HomeProps = {
 
 const Home: React.FC<HomeProps> = ({ title, options }) => {
   return (
-    <Flex
-      width="100%"
-      bg="amber.100"
-      justify="center"
-      minHeight="100vh"
-      paddingX={["3", "8"]}
-    >
-      <Column width="100%" alignItems="center" space={4}>
+      <Column
+        width="100%"
+        alignItems="center"
+        space={4}
+        bg="amber.100"
+        minHeight="100vh"
+        paddingX={["3", "8"]}
+        justifyContent="center"
+      >
         <Heading fontWeight="medium" fontSize={["4xl"]} color="primary.500">
           {title}
         </Heading>
@@ -37,7 +38,6 @@ const Home: React.FC<HomeProps> = ({ title, options }) => {
           );
         })}
       </Column>
-    </Flex>
   );
 };
 

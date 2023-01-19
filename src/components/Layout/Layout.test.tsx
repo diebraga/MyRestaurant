@@ -2,14 +2,12 @@ import { Text } from "native-base";
 import { renderWithProvider, screen } from "../../test";
 import { Layout, LayoutProps } from "./Layout";
 
-const mockChildrenLabel = "children mock"
-const mockChildren = (
-  <Text>{mockChildrenLabel}</Text>
-)
+const mockChildrenLabel = "children mock";
+const mockChildren = <Text>{mockChildrenLabel}</Text>;
 
 const mockLayoutProps: LayoutProps = {
-  children:mockChildren
-}
+  children: mockChildren,
+};
 
 it("Should render children", () => {
   renderWithProvider(<Layout>{mockLayoutProps.children}</Layout>);
