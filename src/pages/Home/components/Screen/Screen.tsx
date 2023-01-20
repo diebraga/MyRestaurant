@@ -1,12 +1,12 @@
 import { Column, Heading } from "native-base";
 import React from "react";
 import { ScreenItem } from "./components/ScreenItem";
+import { Section } from "../../Home";
+import { safeMap } from "../../../../utils/safeMap/safeMap";
 
-export type ScreenProps = {
-  title: string
-}
+export type ScreenProps = Section;
 
-const Screen: React.FC<ScreenProps> = ({ title }) => {
+const Screen: React.FC<ScreenProps> = ({ title, products }) => {
   return (
     <Column
       width="100%"
@@ -19,7 +19,9 @@ const Screen: React.FC<ScreenProps> = ({ title }) => {
       <Heading fontWeight="medium" fontSize={["4xl"]} color="primary.500">
         {title}
       </Heading>
-      <ScreenItem />
+      {safeMap(products)?.map((product) => (
+        <ScreenItem {...product} />
+      ))}
     </Column>
   );
 };
