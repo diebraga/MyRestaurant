@@ -11,7 +11,7 @@ export type Product = {
   name: string;
   description: string;
   imgUri: string;
-  price: number
+  price: number;
 };
 
 export type Section = {
@@ -31,7 +31,7 @@ const homeSections = [
         description:
           "Bengaluru (also called Bangalore) is the center of India's high-tech",
         imgUri: American,
-        price: 10
+        price: 10,
       },
       {
         id: "2",
@@ -39,7 +39,7 @@ const homeSections = [
         description:
           "Bengaluru (also called Bangalore) is the center of India's high-tech",
         imgUri: Hawaian,
-        price: 13
+        price: 13,
       },
     ],
   },
@@ -53,7 +53,7 @@ const homeSections = [
         description:
           "Bengaluru (also called Bangalore) is the center of India's high-tech",
         imgUri: Cuban,
-        price: 16
+        price: 16,
       },
       {
         id: "2",
@@ -61,7 +61,7 @@ const homeSections = [
         description:
           "Bengaluru (also called Bangalore) is the center of India's high-tech",
         imgUri: Arabic,
-        price: 9
+        price: 9,
       },
     ],
   },
@@ -74,7 +74,6 @@ const Home: React.FC = () => {
         width="100%"
         alignItems="center"
         space={4}
-        bg="amber.100"
         minHeight="100vh"
         paddingX={["3", "8"]}
         justifyContent="center"

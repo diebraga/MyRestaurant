@@ -1,45 +1,65 @@
-import { Avatar, Flex, Heading, Stack, Text } from "native-base";
+import { Avatar, Flex, Heading, Pressable, Stack, Text } from "native-base";
 import React from "react";
 import { Product } from "../../../Home";
 
-export type ScreenItemProps = Product;
+export type ScreenItemProps = Product & {
+  onPress?: () => void;
+};
 
 const ScreenItem: React.FC<ScreenItemProps> = ({
   name,
   description,
   imgUri,
   price,
+  onPress,
 }) => {
   return (
-    <Stack direction={["row"]} rounded="lg" overflow="hidden" width={["100%"]}>
-      <Flex justify="center">
-        <Avatar
-          source={{
-            uri: imgUri,
-          }}
-          size="xl"
-        />
-      </Flex>
+    <Pressable onPress={onPress}>
       <Stack
-        flex="1"
-        padding="1"
-        marginLeft="1"
-        space={[3, 3, 1.5]}
-        justifyContent="space-around"
+        direction={{ base: "column", xs: "row" }}
+        overflow="hidden"
+        width={["100%"]}
+        shadow="1"
+        borderRadius="md"
+        padding="3"
       >
-        <Stack>
-          <Heading size="sm" ml="-1">
+        <Flex justify="center" align="center">
+          <Avatar
+            source={{
+              uri: imgUri,
+            }}
+            size="xl"
+          />
+        </Flex>
+        <Stack
+          flex="1"
+          padding="1"
+          marginLeft="2"
+          justifyContent="space-around"
+          marginTop={{ base: "1", xs: "0" }}
+        >
+          <Heading
+            size="sm"
+            textAlign={{ base: "center", xs: "start" }}
+            marginTop={{ base: "1", xs: "0" }}
+          >
             {name}
           </Heading>
-          <Text fontWeight="400">{description}</Text>
-        </Stack>
-        <Flex marginLeft="0">
-          <Text color="coolGray.600" fontWeight="400" fontSize="sm">
+          <Text fontWeight="400" textAlign={{ base: "center", xs: "start" }}>
+            {description}
+          </Text>
+          <Text
+            color="primary.600"
+            fontWeight="400"
+            fontSize="lg"
+            textAlign={{ base: "center", xs: "right" }}
+            paddingRight="2"
+          >
             ${price}
           </Text>
-        </Flex>
+        </Stack>
       </Stack>
-    </Stack>
+    </Pressable>
   );
 };
 

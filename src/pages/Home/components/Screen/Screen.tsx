@@ -10,7 +10,6 @@ const Screen: React.FC<ScreenProps> = ({ title, products }) => {
   return (
     <Column
       width="100%"
-      bg="amber.100"
       minHeight="100vh"
       alignItems="center"
       space={4}
