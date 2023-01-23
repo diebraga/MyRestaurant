@@ -19,7 +19,7 @@ const Screen: React.FC<ScreenProps> = ({ title, products }) => {
         {title}
       </Heading>
       {safeMap(products)?.map((product) => (
-        <ScreenItem {...product} />
+        <ScreenItem {...product} key={product.id}/>
       ))}
     </Column>
   );
