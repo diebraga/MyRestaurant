@@ -1,6 +1,6 @@
 import { Avatar, Flex, Heading, Pressable, Stack, Text } from "native-base";
 import React from "react";
-import { Product } from "../../../Home";
+import { Product } from "../../../Menu";
 
 export type ScreenItemProps = Product & {
   onPress?: () => void;

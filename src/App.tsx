@@ -2,9 +2,8 @@ import { Home } from "./pages/Home/Home";
 import { Layout } from "./components/Layout/Layout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { NotFound } from "./pages/NotFound/NotFound";
-import { Center, Flex, Pressable } from "native-base";
-import { Outlet } from "react-router-dom";
 import { BottomNav } from "./components/BottomNav/BottomNav";
+import { Menu } from "./pages/Menu/Menu";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +14,11 @@ const router = createBrowserRouter([
       {
         path: "/:userId",
         element: <Home />,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "/:userId/menu",
+        element: <Menu />,
         errorElement: <NotFound />,
       },
     ],

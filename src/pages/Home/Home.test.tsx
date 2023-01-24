@@ -1,18 +1,9 @@
-import { Text } from "native-base";
 import { renderWithProvider, screen } from "../../test";
 import { Home } from "./Home";
 
-const homeTitleMock = "Screen";
-
-const mockHome = <Text>{homeTitleMock}</Text>;
-
-jest.mock("./components/Screen/Screen", () => {
-  return {
-    Screen: () => mockHome,
-  };
-});
+const homeTitle = "LOGO";
 
 it("Home should be defined", () => {
   renderWithProvider(<Home />);
-  expect(screen.getAllByText(homeTitleMock)).toBeDefined();
+  expect(screen.getAllByText(homeTitle)).toBeDefined();
 });

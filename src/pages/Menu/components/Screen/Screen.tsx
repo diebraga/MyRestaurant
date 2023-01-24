@@ -1,7 +1,7 @@
 import { Column, Heading } from "native-base";
 import React from "react";
 import { ScreenItem } from "./components/ScreenItem";
-import { Section } from "../../Home";
+import { Section } from "../../Menu";
 import { safeMap } from "../../../../utils/safeMap/safeMap";
 
 export type ScreenProps = Section;
