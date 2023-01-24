@@ -1,8 +1,17 @@
 import React from "react";
-import { Center, Flex, Pressable, Icon, Text } from "native-base";
+import { Flex } from "native-base";
 import { Outlet, useParams, useNavigate } from "react-router-dom";
+import { BottomNavItem } from "./components/BottomNavItem";
 
-const BottomNav: React.FC = () => {
+type BottomNavProps = {
+  items: {
+    id: string;
+    label: string;
+    path: string;
+  }[];
+};
+
+const BottomNav: React.FC<BottomNavProps> = ({ items }) => {
   const [selected, setSelected] = React.useState(0);
   let { userId } = useParams();
   const navigate = useNavigate();
@@ -25,62 +34,16 @@ const BottomNav: React.FC = () => {
         width="100%"
         maxWidth="650px"
       >
-        <Pressable
-          opacity={selected === 0 ? 1 : 0.5}
-          py="3"
-          flex={1}
-          onPress={() => onPressNavigation(0, `/${userId}`)}
-        >
-          <Center>
-            <Icon
-              mb="1"
-              // as={
-              //   <MaterialCommunityIcons
-              //     name={selected === 0 ? "home" : "home-outline"}
-              //   />
-              // }
-
-              size="sm"
+        {items.map((item, index) => {
+          return (
+            <BottomNavItem
+              key={item.id}
+              label={item.label}
+              isSelected={index === selected}
+              onPress={() => onPressNavigation(index, `/${userId}` + item.path)}
             />
-            <Text fontSize="12">Home</Text>
-          </Center>
-        </Pressable>
-
-        <Pressable
-          opacity={selected === 1 ? 1 : 0.5}
-          py="2"
-          flex={1}
-          onPress={() => onPressNavigation(1, `/${userId}/menu`)}
-          >
-          <Center>
-            <Icon
-              mb="1"
-              // as={<MaterialIcons name="search" />}
-              size="sm"
-            />
-            <Text fontSize="12">Menu</Text>
-          </Center>
-        </Pressable>
-        <Pressable
-          opacity={selected === 2 ? 1 : 0.6}
-          py="2"
-          flex={1}
-          onPress={() => setSelected(2)}
-        >
-          <Center>
-            <Icon
-              mb="1"
-              // as={
-              //   <MaterialCommunityIcons
-              //     name={selected === 2 ? "cart" : "cart-outline"}
-              //   />
-              // }
-
-              size="sm"
-            />
-            <Text fontSize="12">Cart</Text>
-          </Center>
-        </Pressable>
+          );
+        })}
       </Flex>
       <div id="detail">
         <Outlet />
