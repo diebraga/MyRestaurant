@@ -1,11 +1,11 @@
-import { Pressable, Icon, Text, Center } from "native-base";
+import { Button, Icon, Text, Center } from "@chakra-ui/react";
 import React, { ForwardRefExoticComponent } from "react";
 import { navItemIsSelected } from "./utils/navItemIsSelected/navItemIsSelected";
 import { IconProps } from "phosphor-react";
 
 export type BottomNavItemProps = {
   isSelected: boolean;
-  onPress: () => void;
+  onClick: () => void;
   label: string;
   ItemIcon: ForwardRefExoticComponent<
     IconProps & React.RefAttributes<SVGSVGElement>
@@ -14,23 +14,23 @@ export type BottomNavItemProps = {
 
 const BottomNavItem: React.FC<BottomNavItemProps> = ({
   isSelected,
-  onPress,
+  onClick,
   label,
   ItemIcon,
 }) => {
   return (
-    <Pressable
+    <Button
       opacity={navItemIsSelected(isSelected)}
       py="3"
       flex={1}
-      onPress={onPress}
-      accessibilityRole="button"
+      onClick={onClick}
+      type="button"
     >
       <Center>
         <ItemIcon size={24} />
         <Text fontSize="12">{label}</Text>
       </Center>
-    </Pressable>
+    </Button>
   );
 };
 

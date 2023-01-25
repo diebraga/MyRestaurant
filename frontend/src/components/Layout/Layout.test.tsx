@@ -1,4 +1,4 @@
-import { Text } from "native-base";
+import { Text } from "@chakra-ui/react";
 import { renderWithProvider, screen } from "../../test";
 import { Layout, LayoutProps } from "./Layout";
 

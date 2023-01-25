@@ -5,7 +5,7 @@ const mockClick = jest.fn();
 
 const mockScreenItemProps = {
   name: "name_mock",
-  onPress: mockClick as (() => void) | undefined,
+  onClick: mockClick as (() => void) | undefined,
 } as ScreenItemProps;
 
 it("Should render ScreenItem corectly", () => {
@@ -14,7 +14,7 @@ it("Should render ScreenItem corectly", () => {
   expect(screen.getByText(mockScreenItemProps.name)).toBeDefined();
 });
 
-it("Should trigger onPress corectly", () => {
+it("Should trigger onClick corectly", () => {
   renderWithProvider(<ScreenItem {...mockScreenItemProps} />);
 
   fireEvent.click(screen.getByText(mockScreenItemProps.name));

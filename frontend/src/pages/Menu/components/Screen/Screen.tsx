@@ -1,4 +1,4 @@
-import { Column, Heading } from "native-base";
+import { VStack, Heading } from "@chakra-ui/react";
 import React from "react";
 import { ScreenItem } from "./components/ScreenItem";
 import { Section } from "../../Menu";
@@ -8,11 +8,11 @@ export type ScreenProps = Section;
 
 const Screen: React.FC<ScreenProps> = ({ title, products }) => {
   return (
-    <Column
+    <VStack
       width="100%"
       minHeight="100vh"
       alignItems="center"
-      space={4}
+      spacing={4}
       paddingX={["3", "8"]}
     >
       <Heading fontWeight="medium" fontSize={["4xl"]}>
@@ -21,7 +21,7 @@ const Screen: React.FC<ScreenProps> = ({ title, products }) => {
       {safeMap(products)?.map((product) => (
         <ScreenItem {...product} key={product.id} />
       ))}
-    </Column>
+    </VStack>
   );
 };
 

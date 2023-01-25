@@ -1,4 +1,4 @@
-import { Flex } from "native-base";
+import { Flex } from "@chakra-ui/react";
 import React from "react";
 
 export type LayoutProps = {

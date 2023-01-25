@@ -1,5 +1,5 @@
 import React, { ForwardRefExoticComponent } from "react";
-import { Flex } from "native-base";
+import { Flex } from "@chakra-ui/react";
 import { Outlet, useParams, useNavigate } from "react-router-dom";
 import { BottomNavItem } from "./components/BottomNavItem";
 import { IconProps } from "phosphor-react";
@@ -11,7 +11,7 @@ type BottomNavProps = {
     path: string;
     ItemIcon: ForwardRefExoticComponent<
       IconProps & React.RefAttributes<SVGSVGElement>
-    >
+    >;
   }[];
 };
 
@@ -20,7 +20,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ items }) => {
   let { userId } = useParams();
   const navigate = useNavigate();
 
-  const onPressNavigation = (selected: number, to: string) => {
+  const onClickNavigation = (selected: number, to: string) => {
     setSelected(selected);
     navigate(to);
   };
@@ -41,18 +41,17 @@ const BottomNav: React.FC<BottomNavProps> = ({ items }) => {
         {items.map((item, index) => {
           return (
             <BottomNavItem
-              key={item.id}
               label={item.label}
               isSelected={index === selected}
-              onPress={() => onPressNavigation(index, `/${userId}` + item.path)}
+              onClick={() => onClickNavigation(index, `/${userId}` + item.path)}
               ItemIcon={item.ItemIcon}
             />
           );
         })}
       </Flex>
-      <div id="detail">
+      <Flex>
         <Outlet />
-      </div>
+      </Flex>
     </>
   );
 };

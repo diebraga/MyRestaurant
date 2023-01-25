@@ -7,7 +7,7 @@ const mockedPress = jest.fn();
 const mockProps: BottomNavItemProps = {
   isSelected: true,
   label: "label",
-  onPress: mockedPress,
+  onClick: mockedPress,
   ItemIcon: House
 };
 
@@ -17,7 +17,7 @@ it("Should render bottom nav item", () => {
   expect(screen.getByText(mockProps.label)).toBeDefined();
 });
 
-it("Should fire button onPress", () => {
+it("Should fire button onClick", () => {
   renderWithProvider(<BottomNavItem {...mockProps} />);
 
   fireEvent.click(screen.getByRole("button"));

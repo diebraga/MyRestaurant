@@ -1,15 +1,15 @@
 import React from "react";
-import { Column, Heading } from "native-base";
+import { VStack, Heading } from "@chakra-ui/react";
 
 const homeTitle = "LOGO";
 
 const Home: React.FC = () => {
   return (
     <>
-      <Column
+      <VStack
         width="100%"
         alignItems="center"
-        space={4}
+        spacing={4}
         minHeight="100vh"
         paddingX={["3", "8"]}
         justifyContent="center"
@@ -17,7 +17,7 @@ const Home: React.FC = () => {
         <Heading fontWeight="medium" fontSize={["4xl"]}>
           {homeTitle}
         </Heading>
-      </Column>
+      </VStack>
     </>
   );
 };

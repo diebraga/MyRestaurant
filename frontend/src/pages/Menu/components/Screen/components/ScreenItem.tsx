@@ -1,9 +1,9 @@
-import { Avatar, Flex, Heading, Pressable, Stack, Text } from "native-base";
+import { Avatar, Flex, Heading, Button, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { Product } from "../../../Menu";
 
 export type ScreenItemProps = Product & {
-  onPress?: () => void;
+  onClick?: () => void;
 };
 
 const ScreenItem: React.FC<ScreenItemProps> = ({
@@ -11,10 +11,10 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
   description,
   imgUri,
   price,
-  onPress,
+  onClick,
 }) => {
   return (
-    <Pressable onPress={onPress}>
+    <Button onClick={onClick}>
       <Stack
         direction={{ base: "column", xs: "row" }}
         overflow="hidden"
@@ -25,9 +25,7 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
       >
         <Flex justify="center" align="center">
           <Avatar
-            source={{
-              uri: imgUri,
-            }}
+            src={imgUri}
             size="xl"
           />
         </Flex>
@@ -58,7 +56,7 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
           </Text>
         </Stack>
       </Stack>
-    </Pressable>
+    </Button>
   );
 };
 
