@@ -4,6 +4,7 @@ import { Home } from "../pages/Home/Home";
 import { Menu } from "../pages/Menu/Menu";
 import { NotFound } from "../pages/NotFound/NotFound";
 import { House, Notebook, BagSimple } from "phosphor-react";
+import { SignIn } from "../pages/SignIn/SignIn";
 
 export const bottomNavItems = [
   {
@@ -27,6 +28,11 @@ export const bottomNavItems = [
 ];
 
 export const router = createBrowserRouter([
+  {
+    path: "/signin",
+    element: <SignIn />,
+    errorElement: <NotFound />,
+  },
   {
     path: "/:userId",
     element: <BottomNav items={bottomNavItems} />,
