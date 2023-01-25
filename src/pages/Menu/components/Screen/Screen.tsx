@@ -15,11 +15,11 @@ const Screen: React.FC<ScreenProps> = ({ title, products }) => {
       space={4}
       paddingX={["3", "8"]}
     >
-      <Heading fontWeight="medium" fontSize={["4xl"]} color="primary.500">
+      <Heading fontWeight="medium" fontSize={["4xl"]}>
         {title}
       </Heading>
       {safeMap(products)?.map((product) => (
-        <ScreenItem {...product} key={product.id}/>
+        <ScreenItem {...product} key={product.id} />
       ))}
     </Column>
   );

@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         paddingX={["3", "8"]}
         justifyContent="center"
       >
-        <Heading fontWeight="medium" fontSize={["4xl"]} color="primary.500">
+        <Heading fontWeight="medium" fontSize={["4xl"]}>
           {homeTitle}
         </Heading>
       </Column>

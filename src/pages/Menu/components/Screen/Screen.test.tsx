@@ -1,9 +1,19 @@
 import { renderWithProvider, screen } from "../../../../test";
 import { Screen, ScreenProps } from "./Screen";
 
-const mockScreenProps = {
+const mockScreenProps: ScreenProps = {
   title: "title_mock",
-} as ScreenProps;
+  id: "1",
+  products: [
+    {
+      description: "description",
+      id: "id",
+      imgUri: "img",
+      name: "name",
+      price: 0,
+    },
+  ],
+};
 
 it("Should render Screen corectly", () => {
   renderWithProvider(<Screen {...mockScreenProps} />);

@@ -1,13 +1,17 @@
-import React from "react";
+import React, { ForwardRefExoticComponent } from "react";
 import { Flex } from "native-base";
 import { Outlet, useParams, useNavigate } from "react-router-dom";
 import { BottomNavItem } from "./components/BottomNavItem";
+import { IconProps } from "phosphor-react";
 
 type BottomNavProps = {
   items: {
     id: string;
     label: string;
     path: string;
+    ItemIcon: ForwardRefExoticComponent<
+      IconProps & React.RefAttributes<SVGSVGElement>
+    >
   }[];
 };
 
@@ -41,6 +45,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ items }) => {
               label={item.label}
               isSelected={index === selected}
               onPress={() => onPressNavigation(index, `/${userId}` + item.path)}
+              ItemIcon={item.ItemIcon}
             />
           );
         })}

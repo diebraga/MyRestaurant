@@ -3,22 +3,26 @@ import { BottomNav } from "../components/BottomNav/BottomNav";
 import { Home } from "../pages/Home/Home";
 import { Menu } from "../pages/Menu/Menu";
 import { NotFound } from "../pages/NotFound/NotFound";
+import { House, Notebook, BagSimple } from "phosphor-react";
 
 export const bottomNavItems = [
   {
     id: "1",
     label: "Home",
     path: "",
+    ItemIcon: House,
   },
   {
     id: "2",
     label: "Menu",
     path: "/menu",
+    ItemIcon: Notebook,
   },
   {
     id: "3",
     label: "Cart",
     path: "/cart",
+    ItemIcon: BagSimple,
   },
 ];
 

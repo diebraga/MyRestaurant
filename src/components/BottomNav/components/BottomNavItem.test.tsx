@@ -1,5 +1,6 @@
 import { fireEvent, renderWithProvider, screen } from "../../../test";
 import { BottomNavItem, BottomNavItemProps } from "./BottomNavItem";
+import { House } from "phosphor-react";
 
 const mockedPress = jest.fn();
 
@@ -7,6 +8,7 @@ const mockProps: BottomNavItemProps = {
   isSelected: true,
   label: "label",
   onPress: mockedPress,
+  ItemIcon: House
 };
 
 it("Should render bottom nav item", () => {

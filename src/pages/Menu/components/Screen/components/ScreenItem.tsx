@@ -49,7 +49,6 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
             {description}
           </Text>
           <Text
-            color="primary.600"
             fontWeight="400"
             fontSize="lg"
             textAlign={{ base: "center", xs: "right" }}
