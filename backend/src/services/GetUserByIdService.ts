@@ -15,7 +15,6 @@ class GetUserByIdService {
     const user = {
       id: getUser?.id,
       name: getUser?.name,
-      surname: getUser?.surname,
       email: getUser?.email
     }
     

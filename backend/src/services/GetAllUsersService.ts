@@ -8,7 +8,6 @@ class GetAllUsersService {
       return { 
         id: item.id, 
         name: item?.name ,
-        surname: item?.surname,
         email: item.email
       };
     });

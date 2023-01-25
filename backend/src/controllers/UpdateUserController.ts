@@ -5,7 +5,7 @@ import { GetUserByIdService } from '../services/GetUserByIdService'
 class UpdateUserByIdController {
   async handle(request: Request, response: Response) {
     const user_id  = request.params.id
-    const { name, surname }  = request.body
+    const { name }  = request.body
 
     const service = new UpdateUserByIdService()
 
@@ -14,7 +14,7 @@ class UpdateUserByIdController {
 
     if (user.id) {
       try {
-        const result = await service.execute(Number(user_id), name, surname)
+        const result = await service.execute(Number(user_id), name)
         return response.json(result)
       } catch (error: any) {
         return response.status(500).json({ error: error.message })

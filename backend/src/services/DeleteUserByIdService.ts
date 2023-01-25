@@ -21,7 +21,6 @@ class DeleteUserByIdService {
     const userResponse = {
       id: deleteUser?.id,
       name: deleteUser?.name,
-      surname: deleteUser?.surname,
       email: deleteUser?.email
     }
 

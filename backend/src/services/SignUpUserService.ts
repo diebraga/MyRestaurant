@@ -5,7 +5,6 @@ import { sign } from 'jsonwebtoken'
 interface UserInterface {
   id?: number
   name: string | null
-  surname: string | null
   email: string
   password: string
 }
@@ -22,7 +21,7 @@ function tokenForUser(user: UserInterface) {
 }
 
 class SignUpUserService {
-  async execute({ email, password, name, surname }: UserInterface) {
+  async execute({ email, password, name }: UserInterface) {
     const user = await prismaClient.user.findFirst({
       where: {
         email: email
@@ -42,7 +41,6 @@ class SignUpUserService {
     const createUser = await prismaClient.user.create({
       data: {
         name,
-        surname,
         email,
         password: passwordHash,
       },
@@ -52,7 +50,6 @@ class SignUpUserService {
       user: {
         id: createUser.id,
         name: createUser.name,
-        surname: createUser.surname,
         email: createUser.email
       },
       token: tokenForUser(createUser)

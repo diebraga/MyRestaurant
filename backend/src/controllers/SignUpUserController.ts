@@ -3,7 +3,7 @@ import { SignUpUserService } from '../services/SignUpUserService'
 
 class SignUpUserController {
   async handle(request: Request, response: Response) {
-    const { email, password, name, surname } = request.body
+    const { email, password, name } = request.body
 
     const service = new SignUpUserService()
 
@@ -12,7 +12,6 @@ class SignUpUserController {
         name,
         password,
         email,
-        surname
       })
   
       return response.status(200).json(result)
