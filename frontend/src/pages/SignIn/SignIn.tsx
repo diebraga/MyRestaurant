@@ -3,6 +3,7 @@ import { Button, Heading, Input, Text, Flex } from "@chakra-ui/react";
 import { ReactComponent as GoogleIcon } from "../../assets/svgs/google-color.svg";
 import { Key } from "phosphor-react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   email: string;
@@ -15,9 +16,14 @@ const SignIn: React.FC = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
 
-  console.log(errors);
+  const navigate = useNavigate();
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    navigate("/account");
+    console.log(data);
+  };
+
   return (
     <Flex
       flex={1}

@@ -3,7 +3,6 @@ import { Flex } from "@chakra-ui/react";
 import { Outlet, useParams, useNavigate } from "react-router-dom";
 import { BottomNavItem } from "./components/BottomNavItem";
 import { IconProps } from "phosphor-react";
-import { navItemIsSelected } from "./components/utils/navItemIsSelected/navItemIsSelected";
 
 type BottomNavProps = {
   items: {
