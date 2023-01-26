@@ -48,7 +48,7 @@ const QrCode: React.FC<QrCodeProps> = ({ value }) => {
           viewBox={`0 0 256 256`}
         />
       </Flex>
-      <Button variant="link" onClick={downloadScreenshot}>
+      <Button variant="link" onClick={downloadScreenshot} color="blue.500">
         Download QrCode
       </Button>
     </>

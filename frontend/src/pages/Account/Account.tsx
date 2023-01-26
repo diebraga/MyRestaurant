@@ -24,7 +24,7 @@ const Account: React.FC = () => {
   };
 
   return (
-    <Flex flexDirection="column" alignItems="center" width="100%" paddingX="4">
+    <Flex flexDirection="column" alignItems="center" width="100%" paddingX="4" marginTop="90px">
       <ImageProfile name="Tel Aviv" />
       <InputGroup>
         <Input
@@ -52,9 +52,10 @@ const Account: React.FC = () => {
           </InputRightElement>
         )}
       </InputGroup>
+
       <Accordion allowToggle width="100%">
         <AccordionItem>
-          <AccordionButton >
+          <AccordionButton>
             <Box as="span" flex="1" textAlign="left">
               Show menu QrCode
             </Box>

@@ -16,6 +16,7 @@ const ImageProfile: React.FC<ImageProfileProps> = ({name,imageUri}) => {
       border="1px"
       size="2xl"
       background="white"
+      zIndex={2}
     >
       <AvatarBadge
         boxSize="50px"
