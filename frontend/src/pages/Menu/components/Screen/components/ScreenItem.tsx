@@ -1,4 +1,4 @@
-import { Avatar, Flex, Heading, Button, Stack, Text } from "@chakra-ui/react";
+import { Avatar, Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import React from "react";
 import { Product } from "../../../Menu";
 
@@ -14,9 +14,9 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
   onClick,
 }) => {
   return (
-    <Button onClick={onClick}>
+    <Flex onClick={onClick}>
       <Stack
-        direction={{ base: "column", xs: "row" }}
+        flexDirection="column"
         overflow="hidden"
         width={["100%"]}
         shadow="1"
@@ -24,39 +24,32 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
         padding="3"
       >
         <Flex justify="center" align="center">
-          <Avatar
-            src={imgUri}
-            size="xl"
-          />
+          <Avatar src={imgUri} size="xl" />
         </Flex>
         <Stack
           flex="1"
           padding="1"
           marginLeft="2"
           justifyContent="space-around"
-          marginTop={{ base: "1", xs: "0" }}
         >
           <Heading
             size="sm"
-            textAlign={{ base: "center", xs: "start" }}
-            marginTop={{ base: "1", xs: "0" }}
           >
             {name}
           </Heading>
-          <Text fontWeight="400" textAlign={{ base: "center", xs: "start" }}>
+          <Text fontWeight="400">
             {description}
           </Text>
           <Text
             fontWeight="400"
             fontSize="lg"
-            textAlign={{ base: "center", xs: "right" }}
             paddingRight="2"
           >
             ${price}
           </Text>
         </Stack>
       </Stack>
-    </Button>
+    </Flex>
   );
 };
 

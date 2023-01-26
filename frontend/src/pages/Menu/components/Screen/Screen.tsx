@@ -8,13 +8,7 @@ export type ScreenProps = Section;
 
 const Screen: React.FC<ScreenProps> = ({ title, products }) => {
   return (
-    <VStack
-      width="100%"
-      minHeight="100vh"
-      alignItems="center"
-      spacing={4}
-      paddingX={["3", "8"]}
-    >
+    <VStack width="100%" minHeight="100vh" spacing={4} justifySelf="center">
       <Heading fontWeight="medium" fontSize={["4xl"]}>
         {title}
       </Heading>

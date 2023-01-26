@@ -1,6 +1,5 @@
-import { Button, Icon, Text, Center } from "@chakra-ui/react";
+import { Button, Text, Center, Flex } from "@chakra-ui/react";
 import React, { ForwardRefExoticComponent } from "react";
-import { navItemIsSelected } from "./utils/navItemIsSelected/navItemIsSelected";
 import { IconProps } from "phosphor-react";
 
 export type BottomNavItemProps = {
@@ -19,18 +18,21 @@ const BottomNavItem: React.FC<BottomNavItemProps> = ({
   ItemIcon,
 }) => {
   return (
-    <Button
-      opacity={navItemIsSelected(isSelected)}
-      py="3"
+    <Flex
+      as={Button}
       flex={1}
+      width="100%"
+      justify="center"
       onClick={onClick}
-      type="button"
+      background="transparent"
+      height={50}
+      borderRadius="none"
     >
-      <Center>
+      <Center flexDirection="column">
         <ItemIcon size={24} />
         <Text fontSize="12">{label}</Text>
       </Center>
-    </Button>
+    </Flex>
   );
 };
 

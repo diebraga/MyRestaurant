@@ -28,13 +28,10 @@ const BottomNav: React.FC<BottomNavProps> = ({ items }) => {
   return (
     <>
       <Flex
-        background="white"
-        justify="space-around"
         flexDirection="row"
         position="fixed"
         bottom="0"
         zIndex={999}
-        flex={1}
         width="100%"
         maxWidth="650px"
       >
@@ -45,6 +42,7 @@ const BottomNav: React.FC<BottomNavProps> = ({ items }) => {
               isSelected={index === selected}
               onClick={() => onClickNavigation(index, `/${userId}` + item.path)}
               ItemIcon={item.ItemIcon}
+              key={item.id}
             />
           );
         })}

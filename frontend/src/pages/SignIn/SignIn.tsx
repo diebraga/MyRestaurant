@@ -26,11 +26,18 @@ const SignIn: React.FC = () => {
       alignItems="center"
       padding={6}
     >
-      <Flex maxW="400px" width="100%" flexDirection="column">
+      <Flex
+        as="form"
+        onSubmit={handleSubmit(onSubmit)}
+        maxW="400px"
+        width="100%"
+        flexDirection="column"
+      >
         <Heading>Login</Heading>
         <Text marginTop="4">Email</Text>
         <Input
-          size="xl"
+          size="lg"
+          borderColor="gray.700"
           _focus={{ backgroundColor: "white" }}
           {...register("email", {
             required: "Email is required",
@@ -41,16 +48,24 @@ const SignIn: React.FC = () => {
             },
           })}
         />
+        <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
+          {errors && errors.email?.message}
+        </Text>
 
         <Text marginTop="2">Password</Text>
         <Input
-          size="xl"
+          borderColor="gray.700"
+          size="lg"
           _focus={{ backgroundColor: "white" }}
           {...register("password", {
             minLength: 4,
             maxLength: 30,
           })}
+          type="password"
         />
+        <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
+          {errors && errors.password?.message}
+        </Text>
         <Button
           width="100%"
           marginTop="4"
@@ -58,21 +73,34 @@ const SignIn: React.FC = () => {
           colorScheme="darkText"
           leftIcon={<Key size={25} />}
           textAlign="left"
+          size="lg"
+          type="submit"
+          fontSize="md"
         >
           SignIn
         </Button>
 
-        <Button display="inline-block" variant="link">
+        <Button
+          display="inline-block"
+          variant="link"
+          size="lg"
+          marginTop={3}
+          fontSize="md"
+          colorScheme="blue"
+        >
           Did you forget your password?
         </Button>
 
         <Text textAlign="center">-</Text>
         <Button
           width="100%"
+          size="lg"
+          fontSize="md"
           variant="outline"
           colorScheme="darkText"
           marginTop="2"
           leftIcon={<GoogleIcon height={25} width={25} />}
+          type="button"
         >
           Login with Google
         </Button>
