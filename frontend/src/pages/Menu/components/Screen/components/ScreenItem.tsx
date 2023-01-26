@@ -14,7 +14,7 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
   onClick,
 }) => {
   return (
-    <Flex onClick={onClick}>
+    <Flex as="a" onClick={onClick}>
       <Stack
         overflow="hidden"
         width={["100%"]}
@@ -33,19 +33,9 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
           marginLeft="2"
           justifyContent="space-around"
         >
-          <Heading
-            size="sm"
-          >
-            {name}
-          </Heading>
-          <Text fontWeight="400">
-            {description}
-          </Text>
-          <Text
-            fontWeight="400"
-            fontSize="lg"
-            paddingRight="2"
-          >
+          <Heading size="sm">{name}</Heading>
+          <Text fontWeight="400">{description}</Text>
+          <Text fontWeight="400" fontSize="lg" paddingRight="2">
             ${price}
           </Text>
         </Stack>

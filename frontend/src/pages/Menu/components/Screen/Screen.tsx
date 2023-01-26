@@ -21,7 +21,11 @@ const Screen: React.FC<ScreenProps> = ({ title, products }) => {
       </Heading>
       <Flex direction={["column", "row"]}>
         {safeMap(products)?.map((product) => (
-          <ScreenItem {...product} key={product.id} />
+          <ScreenItem
+            {...product}
+            key={product.id}
+            onClick={() => alert("HI")}
+          />
         ))}
       </Flex>
     </VStack>
