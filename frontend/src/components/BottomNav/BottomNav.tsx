@@ -34,6 +34,8 @@ const BottomNav: React.FC<BottomNavProps> = ({ items }) => {
         zIndex={999}
         width="100%"
         maxWidth="650px"
+        background="white"
+        boxShadow="0px 0px 5px 0px rgba(0, 0, 0, 0.3)"
       >
         {items.map((item, index) => {
           return (

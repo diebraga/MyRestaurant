@@ -16,12 +16,13 @@ const ScreenItem: React.FC<ScreenItemProps> = ({
   return (
     <Flex onClick={onClick}>
       <Stack
-        flexDirection="column"
         overflow="hidden"
         width={["100%"]}
         shadow="1"
         borderRadius="md"
         padding="3"
+        direction={["row", "column"]}
+        boxShadow="sm"
       >
         <Flex justify="center" align="center">
           <Avatar src={imgUri} size="xl" />

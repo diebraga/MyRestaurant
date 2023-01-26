@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/react";
 import React from "react";
 import { American, Arabic, Cuban, Hawaian } from "../../assets/index";
 import { safeMap } from "../../utils/safeMap/safeMap";
@@ -66,11 +67,11 @@ const homeSections = [
 
 const Menu: React.FC = () => {
   return (
-    <>
+    <Flex flexDirection={["column"]}>
       {safeMap(homeSections)?.map((option) => (
         <Screen key={option.id} {...option} />
       ))}
-    </>
+    </Flex>
   );
 };
 
