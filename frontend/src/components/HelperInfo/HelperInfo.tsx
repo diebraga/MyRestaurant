@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonProps,
   Flex,
   Popover,
   PopoverArrow,
@@ -11,18 +12,33 @@ import {
 import { Question } from "phosphor-react";
 import React from "react";
 
-type HelperInfoProps = {
+type IconSizeType = "sm" | "md" | "xs";
+
+type HelperInfoProps = ButtonProps & {
   title?: string;
   content?: string;
-  size: "sm" | "md";
+  size: IconSizeType;
 };
 
-const HelperInfo: React.FC<HelperInfoProps> = ({ title, content, size }) => {
+const HelperInfo: React.FC<HelperInfoProps> = ({
+  title,
+  content,
+  size,
+  ...props
+}) => {
+  const defineIconSize = (size: IconSizeType): number => {
+    if (size === "sm") {
+      return 24;
+    } else if (size === "md") {
+      return 28;
+    } else return 20;
+  };
+
   return (
     <Popover>
       <PopoverTrigger>
-        <Button variant="unstyled">
-          <Question size={size === "md" ? 28 : 24} />
+        <Button variant="unstyled" {...props}>
+          <Question size={defineIconSize(size)} />
         </Button>
       </PopoverTrigger>
       <PopoverContent maxWidth="300px">

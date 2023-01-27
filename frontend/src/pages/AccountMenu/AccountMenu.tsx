@@ -3,6 +3,7 @@ import { Flex } from "@chakra-ui/react";
 import { QrCode } from "./components/QrCode/QrCode";
 import { CreateNewSectionForm } from "./components/CreateNewSectionForm/CreateNewSectionForm";
 import { MenuSections } from "./components/MenuSections/MenuSections";
+import { CreateNewTableForm } from "./components/CreateNewTableForm/CreateNewTableForm";
 
 const mockMenuSections = [
   { id: "1", title: "Foods", quantity: 2 },
@@ -14,6 +15,7 @@ const AccountMenu: React.FC = () => {
     <Flex flexDirection="column" width="100%" paddingX="4" marginTop="90px">
       <MenuSections sections={mockMenuSections} />
       <CreateNewSectionForm />
+      <CreateNewTableForm />
       <QrCode value={"https://discord.com/"} buttonTitle="Show Menu's QrCode" />
     </Flex>
   );
