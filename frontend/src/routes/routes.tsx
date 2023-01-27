@@ -6,6 +6,7 @@ import { NotFound } from "../pages/NotFound/NotFound";
 import { SignIn } from "../pages/SignIn/SignIn";
 import { Account } from "../pages/Account/Account";
 import { AdminHeader } from "../components/AdminHeader/AdminHeader";
+import { AccountMenu } from "../pages/AccountMenu/AccountMenu";
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/account/menu",
-        element: <Account />,
+        element: <AccountMenu />,
         errorElement: <NotFound />,
       },
     ],

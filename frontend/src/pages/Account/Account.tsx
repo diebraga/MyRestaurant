@@ -1,10 +1,4 @@
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
-  Box,
   Button,
   Flex,
   Input,
@@ -14,7 +8,6 @@ import {
 import { Check } from "phosphor-react";
 import React, { useState } from "react";
 import { ImageProfile } from "./components/ImageProfile/ImageProfile";
-import { QrCode } from "./components/QrCode/QrCode";
 
 const Account: React.FC = () => {
   const [isEdittingName, setIsEdittingName] = useState(false);
@@ -52,20 +45,6 @@ const Account: React.FC = () => {
           </InputRightElement>
         )}
       </InputGroup>
-
-      <Accordion allowToggle width="100%">
-        <AccordionItem>
-          <AccordionButton>
-            <Box as="span" flex="1" textAlign="left">
-              Show menu QrCode
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel pb={4}>
-            <QrCode value={"https://discord.com/"} />
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
     </Flex>
   );
 };
