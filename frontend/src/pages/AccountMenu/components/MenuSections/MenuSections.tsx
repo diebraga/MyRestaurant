@@ -28,18 +28,20 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
 
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
-          {sections?.map((item) => {
-            return (
-              <Box height="100%" as={Link} key={item.id}>
-                <Heading size="xs" textTransform="uppercase">
-                  {item.title}
-                </Heading>
-                <Text pt="2" fontSize="sm">
-                  {item.quantity} Items
-                </Text>
-              </Box>
-            );
-          }) || (
+          {sections && sections?.length > 0 ? (
+            sections?.map((item) => {
+              return (
+                <Box height="100%" as={Link} key={item.id}>
+                  <Heading size="xs" textTransform="uppercase">
+                    {item.title}
+                  </Heading>
+                  <Text pt="2" fontSize="sm">
+                    {item.quantity} Items
+                  </Text>
+                </Box>
+              );
+            })
+          ) : (
             <Box height="100%" as={Link}>
               <Text fontSize="sm">Please create a new section</Text>
             </Box>
