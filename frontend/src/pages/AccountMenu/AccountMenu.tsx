@@ -12,7 +12,7 @@ const mockMenuSections = [
 const AccountMenu: React.FC = () => {
   return (
     <Flex flexDirection="column" width="100%" paddingX="4" marginTop="90px">
-      <MenuSections sections={[]} />
+      <MenuSections sections={mockMenuSections} />
       <CreateNewSectionForm />
       <QrCode value={"https://discord.com/"} buttonTitle="Show Menu's QrCode" />
     </Flex>

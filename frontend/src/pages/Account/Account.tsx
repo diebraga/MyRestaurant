@@ -4,21 +4,71 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  useDisclosure,
+  VisuallyHiddenInput,
 } from "@chakra-ui/react";
 import { Check } from "phosphor-react";
-import React, { useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import { AceptImageAlert } from "./components/AceptImageAlert/AceptImageAlert";
 import { ImageProfile } from "./components/ImageProfile/ImageProfile";
 
 const Account: React.FC = () => {
   const [isEdittingName, setIsEdittingName] = useState(false);
+  const inputFile = useRef<HTMLInputElement>(null);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const acceptNameChanges = () => {
     setIsEdittingName(false);
   };
 
+  const openFileInput = () => {
+    if (inputFile.current) {
+      inputFile.current.click();
+    }
+  };
+
+  const [{ src }, setImg] = useState({
+    src: "",
+  });
+
+  useEffect(() => {
+    if (src.length > 0) {
+      onOpen();
+    }
+  }, [src, onOpen]);
+
+  const handleImgPreview = (e: ChangeEvent<any>) => {
+    if (e.target.files[0]) {
+      setImg({
+        src: URL.createObjectURL(e.target.files[0]),
+      });
+    }
+  };
+
+  const onCloseEditPicture = () => {
+    onClose();
+  };
+
   return (
-    <Flex flexDirection="column" alignItems="center" width="100%" paddingX="4" marginTop="90px">
-      <ImageProfile name="Tel Aviv" />
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      width="100%"
+      paddingX="4"
+      marginTop="90px"
+    >
+      <AceptImageAlert
+        isOpen={isOpen}
+        onClose={onCloseEditPicture}
+        onAccept={onClose}
+      />
+      <VisuallyHiddenInput
+        type="file"
+        ref={inputFile}
+        onChange={(e) => handleImgPreview(e)}
+      />
+      <ImageProfile name="Tel Aviv" onClick={openFileInput} src={src} />
       <InputGroup>
         <Input
           defaultValue="Tel Aviv"

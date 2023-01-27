@@ -1,22 +1,30 @@
-import { Avatar, AvatarBadge } from "@chakra-ui/react";
+import {
+  Avatar,
+  AvatarBadge,
+  Button,
+} from "@chakra-ui/react";
 import { Camera } from "phosphor-react";
-import React from "react";
+import React, {  } from "react";
 
 type ImageProfileProps = {
-  name: string
-  imageUri?: string
-}
+  name: string;
+  onClick?: () => void;
+  src?: string;
+};
 
-const ImageProfile: React.FC<ImageProfileProps> = ({name,imageUri}) => {
+const ImageProfile: React.FC<ImageProfileProps> = ({ name, onClick, src }) => {
   return (
     <Avatar
       name={name}
-      src={imageUri}
-      boxSize="200px"
+      src={src}
+      boxSize="180px"
       border="1px"
       size="2xl"
       background="white"
       zIndex={2}
+      as={Button}
+      onClick={onClick}
+      objectFit="cover"
     >
       <AvatarBadge
         boxSize="50px"
