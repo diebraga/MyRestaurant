@@ -1,4 +1,4 @@
-import { fireEvent, renderWithProvider, screen } from "../../../test";
+import { fireEvent, renderWithProvider, screen } from "../../../utils/test";
 import { BottomNavItem, BottomNavItemProps } from "./BottomNavItem";
 import { House } from "phosphor-react";
 
@@ -8,7 +8,7 @@ const mockProps: BottomNavItemProps = {
   isSelected: true,
   label: "label",
   onClick: mockedPress,
-  ItemIcon: House
+  ItemIcon: House,
 };
 
 it("Should render bottom nav item", () => {

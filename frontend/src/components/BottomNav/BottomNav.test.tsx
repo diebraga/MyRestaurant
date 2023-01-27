@@ -1,4 +1,4 @@
-import { renderWithProvider } from "../../test";
+import { renderWithProvider } from "../../utils/test";
 import { BottomNav } from "./BottomNav";
 
 const mockedUsedNavigate = jest.fn();

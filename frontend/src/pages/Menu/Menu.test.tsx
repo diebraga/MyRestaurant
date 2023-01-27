@@ -1,5 +1,5 @@
 import { Text } from "@chakra-ui/react";
-import { renderWithProvider, screen } from "../../test";
+import { renderWithProvider, screen } from "../../utils/test";
 import { Menu } from "./Menu";
 
 const menuTitleMock = "Screen";

@@ -1,4 +1,4 @@
-import { renderWithProvider, screen } from "../../test";
+import { renderWithProvider, screen } from "../../utils/test";
 import { NotFound } from "./NotFound";
 
 const notFoundTitleMock = "Oops!";

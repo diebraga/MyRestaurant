@@ -1,4 +1,8 @@
-import { fireEvent, renderWithProvider, screen } from "../../../../../test";
+import {
+  fireEvent,
+  renderWithProvider,
+  screen,
+} from "../../../../../utils/test";
 import { ScreenItem, ScreenItemProps } from "./ScreenItem";
 
 const mockClick = jest.fn();
