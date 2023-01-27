@@ -8,8 +8,10 @@ import {
   Text,
   Box,
   Link,
+  Flex,
 } from "@chakra-ui/react";
 import React from "react";
+import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
 
 type MenuSectionsProps = {
   sections?: {
@@ -22,8 +24,15 @@ type MenuSectionsProps = {
 const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
   return (
     <Card width="100%" colorScheme="darkText">
-      <CardHeader>
-        <Heading size="md">Menu Sections</Heading>
+      <CardHeader paddingY={0} paddingTop={2}>
+        <Flex justify="space-between" alignItems="center">
+          <Heading size="md">Menu Sections</Heading>
+          <HelperInfo
+            title="Menu section"
+            content="Every sections with the items are going to be displayed in the Menu."
+            size="md"
+          />
+        </Flex>
       </CardHeader>
 
       <CardBody>

@@ -35,7 +35,7 @@ const AdminHeader: React.FC = () => {
         boxShadow="0px 0px 5px 0px rgba(0, 0, 0, 0.3)"
         padding="2.5"
       >
-        <List size={50} onClick={onOpen} />
+        <List size={40} onClick={onOpen} />
       </Flex>
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />

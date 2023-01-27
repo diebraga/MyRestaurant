@@ -1,12 +1,8 @@
 import React, { createRef } from "react";
 import QRCode from "react-qr-code";
 import * as htmlToImage from "html-to-image";
-import {
-  Flex,
-  Button,
-  Collapse,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Flex, Button, Collapse, useDisclosure } from "@chakra-ui/react";
+import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
 
 export type QrCodeProps = {
   value: string;
@@ -66,9 +62,16 @@ const QrCode: React.FC<QrCodeProps> = ({ value, buttonTitle }) => {
             viewBox={`0 0 256 256`}
           />
         </Flex>
-        <Button variant="link" onClick={downloadScreenshot} color="blue.500">
-          Download QrCode
-        </Button>
+        <Flex justify="space-between">
+          <Button variant="link" onClick={downloadScreenshot} color="blue.500">
+            Download QrCode
+          </Button>
+          <HelperInfo
+            title="QrCode"
+            content="This QrCode redirects to your menu products Download and make it visible for your clients."
+            size="sm"
+          />
+        </Flex>
       </Collapse>
     </>
   );
