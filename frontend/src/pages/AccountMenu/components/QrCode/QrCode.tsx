@@ -44,6 +44,7 @@ const QrCode: React.FC<QrCodeProps> = ({ value, buttonTitle }) => {
         fontSize="md"
         variant="outline"
         colorScheme="darkText"
+        marginBottom="3"
       >
         {buttonTitle}
       </Button>
