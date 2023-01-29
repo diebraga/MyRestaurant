@@ -30,7 +30,12 @@ const AccountMenu: React.FC = () => {
     >
       <MenuSections sections={mockMenuSections} />
       <CreateNewSectionForm />
-      <QrCode value={"https://discord.com/"} buttonTitle="Show Menu's QrCode" />
+      <QrCode
+        value={"https://discord.com/"}
+        buttonTitle="Show Menu's QrCode"
+        contentHelper="This QrCode redirects to your menu products Download and make it visible for your clients."
+        titleHelper="QrCode"
+      />
       <Tables tables={mockTables} />
       <CreateNewTableForm />
     </Flex>

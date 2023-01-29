@@ -7,6 +7,8 @@ import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
 export type QrCodeProps = {
   value: string;
   buttonTitle: string;
+  titleHelper?: string;
+  contentHelper?: string;
 };
 
 const createFileName = (extension = "", ...names: string[]) => {
@@ -17,7 +19,12 @@ const createFileName = (extension = "", ...names: string[]) => {
   return `${names.join("")}.${extension}`;
 };
 
-const QrCode: React.FC<QrCodeProps> = ({ value, buttonTitle }) => {
+const QrCode: React.FC<QrCodeProps> = ({
+  value,
+  buttonTitle,
+  contentHelper,
+  titleHelper,
+}) => {
   const ref = createRef();
   const { isOpen, onToggle } = useDisclosure();
 
@@ -67,11 +74,9 @@ const QrCode: React.FC<QrCodeProps> = ({ value, buttonTitle }) => {
           <Button variant="link" onClick={downloadScreenshot} color="blue.500">
             Download QrCode
           </Button>
-          <HelperInfo
-            title="QrCode"
-            content="This QrCode redirects to your menu products Download and make it visible for your clients."
-            size="sm"
-          />
+          {!titleHelper && !contentHelper ? null : (
+            <HelperInfo title={titleHelper} content={contentHelper} size="sm" />
+          )}
         </Flex>
       </Collapse>
     </>
