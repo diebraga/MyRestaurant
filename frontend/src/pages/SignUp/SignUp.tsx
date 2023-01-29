@@ -1,20 +1,14 @@
 import React from "react";
-import {
-  Button,
-  Heading,
-  Input,
-  Text,
-  Flex,
-  FormControl,
-} from "@chakra-ui/react";
+import { Button, Heading, Input, Text, Flex } from "@chakra-ui/react";
 import { User } from "phosphor-react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
+import { SIGN_UP } from "../../constants/apiEndpoints";
 
 type Inputs = {
-  email_register: string;
-  password_register: string;
-  name_register: string;
+  email: string;
+  password: string;
+  name: string;
 };
 
 const SignUp: React.FC = () => {
@@ -26,9 +20,28 @@ const SignUp: React.FC = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    navigate("/account");
-    console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const formattedData: Inputs = {
+        ...data,
+        email: data.email.trim(),
+        name: data.name.trim(),
+      };
+      const response = await fetch(
+        `${process.env.REACT_APP_PUBLIC_URL}/${SIGN_UP}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formattedData),
+        }
+      );
+      const resJson = await response.json();
+      console.log(resJson);
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -52,20 +65,22 @@ const SignUp: React.FC = () => {
           size="lg"
           borderColor="gray.700"
           _focus={{ backgroundColor: "white" }}
-          {...register("name_register", {
+          type="text"
+          {...register("name", {
             required: "Name is required",
           })}
         />
         <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
-          {errors && errors.name_register?.message}
+          {errors && errors.name?.message}
         </Text>
 
         <Text marginTop={2}>Email</Text>
         <Input
           size="lg"
           borderColor="gray.700"
+          type="email"
           _focus={{ backgroundColor: "white" }}
-          {...register("email_register", {
+          {...register("email", {
             required: "Email is required",
             pattern: {
               value:
@@ -75,7 +90,7 @@ const SignUp: React.FC = () => {
           })}
         />
         <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
-          {errors && errors.email_register?.message}
+          {errors && errors.email?.message}
         </Text>
 
         <Text marginTop="2">Password</Text>
@@ -83,14 +98,14 @@ const SignUp: React.FC = () => {
           borderColor="gray.700"
           size="lg"
           _focus={{ backgroundColor: "white" }}
-          {...register("password_register", {
+          {...register("password", {
             minLength: 4,
             maxLength: 30,
           })}
           type="password"
         />
         <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
-          {errors && errors.password_register?.message}
+          {errors && errors.password?.message}
         </Text>
         <Button
           width="100%"
