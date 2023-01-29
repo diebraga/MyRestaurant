@@ -1,16 +1,23 @@
 import React from "react";
-import { Button, Heading, Input, Text, Flex } from "@chakra-ui/react";
-import { ReactComponent as GoogleIcon } from "../../assets/svgs/google-color.svg";
-import { Key } from "phosphor-react";
+import {
+  Button,
+  Heading,
+  Input,
+  Text,
+  Flex,
+  FormControl,
+} from "@chakra-ui/react";
+import { User } from "phosphor-react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 
 type Inputs = {
-  email: string;
-  password: string;
+  email_register: string;
+  password_register: string;
+  name_register: string;
 };
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -39,13 +46,26 @@ const SignIn: React.FC = () => {
         width="100%"
         flexDirection="column"
       >
-        <Heading>Login</Heading>
-        <Text marginTop="4">Email</Text>
+        <Heading>Register</Heading>
+        <Text marginTop="4">Name</Text>
         <Input
           size="lg"
           borderColor="gray.700"
           _focus={{ backgroundColor: "white" }}
-          {...register("email", {
+          {...register("name_register", {
+            required: "Name is required",
+          })}
+        />
+        <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
+          {errors && errors.name_register?.message}
+        </Text>
+
+        <Text marginTop={2}>Email</Text>
+        <Input
+          size="lg"
+          borderColor="gray.700"
+          _focus={{ backgroundColor: "white" }}
+          {...register("email_register", {
             required: "Email is required",
             pattern: {
               value:
@@ -55,7 +75,7 @@ const SignIn: React.FC = () => {
           })}
         />
         <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
-          {errors && errors.email?.message}
+          {errors && errors.email_register?.message}
         </Text>
 
         <Text marginTop="2">Password</Text>
@@ -63,47 +83,27 @@ const SignIn: React.FC = () => {
           borderColor="gray.700"
           size="lg"
           _focus={{ backgroundColor: "white" }}
+          {...register("password_register", {
+            minLength: 4,
+            maxLength: 30,
+          })}
           type="password"
         />
         <Text fontSize={["xs"]} color="red.500" marginTop="0.5">
-          {errors && errors.password?.message}
+          {errors && errors.password_register?.message}
         </Text>
-        <Button
-          display="inline-block"
-          variant="link"
-          size="lg"
-          marginTop={3}
-          fontSize="sm"
-          colorScheme="blue"
-          textAlign="right"
-        >
-          Recovery password
-        </Button>
-
         <Button
           width="100%"
           marginTop="4"
           variant="outline"
           colorScheme="darkText"
-          leftIcon={<Key size={25} />}
+          leftIcon={<User size={25} />}
           textAlign="left"
           size="lg"
           type="submit"
           fontSize="md"
         >
-          SignIn
-        </Button>
-        <Text textAlign="center">-</Text>
-        <Button
-          width="100%"
-          size="lg"
-          fontSize="md"
-          variant="outline"
-          colorScheme="darkText"
-          leftIcon={<GoogleIcon height={25} width={25} />}
-          type="button"
-        >
-          Login with Google
+          SignUp
         </Button>
         <Button
           display="inline-block"
@@ -114,13 +114,13 @@ const SignIn: React.FC = () => {
           textAlign="right"
           marginTop="3"
           as={Link}
-          to="/signup"
+          to="/signin"
         >
-          Create new account
+          I already have an account
         </Button>
       </Flex>
     </Flex>
   );
 };
 
-export { SignIn };
+export { SignUp };

@@ -7,11 +7,17 @@ import { SignIn } from "../pages/SignIn/SignIn";
 import { Account } from "../pages/Account/Account";
 import { AdminHeader } from "../components/AdminHeader/AdminHeader";
 import { AccountMenu } from "../pages/AccountMenu/AccountMenu";
+import { SignUp } from "../pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
   {
     path: "/signin",
     element: <SignIn />,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
     errorElement: <NotFound />,
   },
   {
