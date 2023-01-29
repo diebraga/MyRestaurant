@@ -1,39 +1,47 @@
 import prismaClient from "../lib";
-import { compare } from 'bcryptjs'
-import { sign } from 'jsonwebtoken'
+import { compare } from "bcryptjs";
+import { sign } from "jsonwebtoken";
 
 interface IAuthenticateRequest {
-  email: string | undefined
-  password: string
+  email: string | undefined;
+  password: string;
 }
 class AuthenticateUserService {
   async execute({ email, password }: IAuthenticateRequest) {
     const user = await prismaClient.user.findFirst({
       where: {
-        email: email
-      }
-    })
+        email: email,
+      },
+    });
 
     if (!user) {
       throw new Error("Email or password incorrect!");
     }
 
-    const passwordMatch = await compare(password, user.password)
+    const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error("Email or password incorrect!")
+      throw new Error("Email or password incorrect!");
     }
 
-    const token = sign({
-      id: user.id, 
-      iat: new Date().getTime() 
-      }, '345tyujdfghj456yudfghj456yuidfghj456yu', {
-        expiresIn: '30d',
-        subject: String(user.id)
-      });
-    
-    return token
+    const token = sign(
+      {
+        id: user.id,
+        iat: new Date().getTime(),
+      },
+      "345tyujdfghj456yudfghj456yuidfghj456yu",
+      {
+        expiresIn: "30d",
+        subject: String(user.id),
+      }
+    );
+
+    return {
+      id: user.id,
+      email: user.email,
+      token,
+    };
   }
 }
 
-export { AuthenticateUserService }
+export { AuthenticateUserService };
