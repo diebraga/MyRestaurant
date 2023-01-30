@@ -5,3 +5,7 @@
 ## SignIn Route  
 #### Endpoint: "/signin"
 #### Integrated with frontend [X]
+
+## Get User Himself Route  
+#### Endpoint: "/user"
+#### Integrated with frontend []

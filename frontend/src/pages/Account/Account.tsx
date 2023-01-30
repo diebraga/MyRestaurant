@@ -11,8 +11,24 @@ import { Check } from "phosphor-react";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { AceptImageAlert } from "./components/AceptImageAlert/AceptImageAlert";
 import { ImageProfile } from "./components/ImageProfile/ImageProfile";
+import useSWR from "swr";
+import { useSearchParams } from "react-router-dom";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { AUTHENTICATION_TOKEN } from "../../constants/localStorageKeys";
+import { USER, USERS } from "../../constants/apiEndpoints";
+import { fetchConfig } from "../../utils/fetchConfig/fetchConfig";
 
 const Account: React.FC = () => {
+  const [authToken] = useLocalStorage(AUTHENTICATION_TOKEN, "");
+  const [searchParams] = useSearchParams();
+  const userId = searchParams.get("id");
+
+  const { data, error } = useSWR(
+    userId
+      ? [`${process.env.REACT_APP_PUBLIC_URL}/${USER}`, fetchConfig(authToken)]
+      : null
+  );
+  console.log(data);
   const [isEdittingName, setIsEdittingName] = useState(false);
   const inputFile = useRef<HTMLInputElement>(null);
 

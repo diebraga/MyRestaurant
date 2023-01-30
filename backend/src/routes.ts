@@ -6,19 +6,28 @@ import { GetUserByIdController } from "./controllers/GetUserByIdController";
 import { UpdateUserByIdController } from "./controllers/UpdateUserController";
 import { ensuereIsAuthenticated } from "./middleware/ensureUserIsAuthenticated";
 import { SignUpUserController } from "./controllers/SignUpUserController";
+import { GetCurrentUserController } from "./controllers/GetCurrentUserController";
 
-const router = Router()
+const router = Router();
 
-router.get('/users/:id',  new GetUserByIdController().handle)
+router.get(
+  "/user",
+  ensuereIsAuthenticated,
+  new GetCurrentUserController().handle
+);
 
-router.delete('/users/:id',ensuereIsAuthenticated,  new DeleteUserByIdController().handle)
+// router.delete('/users/:id',ensuereIsAuthenticated,  new DeleteUserByIdController().handle)
 
-router.put('/users/:id',ensuereIsAuthenticated,  new UpdateUserByIdController().handle)
+router.get("/users", new GetAllUsersController().handle);
 
-router.get('/users',  new GetAllUsersController().handle)
+router.put(
+  "/users/:id",
+  ensuereIsAuthenticated,
+  new UpdateUserByIdController().handle
+);
 
 router.post("/signup", new SignUpUserController().handle);
 
 router.post("/signin", new AuthenticateUserController().handle);
 
-export { router }
+export { router };

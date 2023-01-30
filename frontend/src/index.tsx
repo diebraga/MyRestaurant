@@ -2,16 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from "@chakra-ui/react";
+import { SWRConfig } from "swr";
+import { fetcher } from "../src/utils/fetcher/fetcher";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <SWRConfig
+      value={{
+        fetcher,
+      }}
+    >
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
+    </SWRConfig>
   </React.StrictMode>
 );
 

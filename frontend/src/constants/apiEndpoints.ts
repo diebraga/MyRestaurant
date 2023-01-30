@@ -1,2 +1,4 @@
 export const SIGN_UP = "signup"
 export const SIGN_IN = "signin"
+export const USERS = "users"
+export const USER = "user"
