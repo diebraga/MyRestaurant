@@ -20,4 +20,12 @@
 
 ## Delete Users Menu Sections Route  
 #### Endpoint: "/menu-section/:id"
-#### Integrated with frontend []
+#### Integrated with frontend [X]
+
+## Get Users Tables Route
+#### Endpoint: "/tables"
+#### Integrated with frontend [X]
+
+## Create Users Tables Route
+#### Endpoint: "/tables"
+#### Integrated with frontend [X]

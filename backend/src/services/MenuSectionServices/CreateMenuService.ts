@@ -1,14 +1,12 @@
-import { hash } from "bcryptjs";
-import { sign } from "jsonwebtoken";
 import prismaClient from "../../lib";
 
-interface UserInterface {
+interface MenuSectionInterface {
   userId: number;
   name: string;
 }
 
 class CreateMenuSectionService {
-  async execute({ userId, name }: UserInterface) {
+  async execute({ userId, name }: MenuSectionInterface) {
     if (!userId) {
       throw new Error("User does not exists!");
     }
@@ -24,9 +22,9 @@ class CreateMenuSectionService {
       },
     });
 
-    const createUserResponse = createMenuSection;
+    const createSectionResponse = createMenuSection;
 
-    return createUserResponse;
+    return createSectionResponse;
   }
 }
 

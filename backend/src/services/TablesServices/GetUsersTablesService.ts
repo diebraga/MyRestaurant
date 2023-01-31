@@ -11,7 +11,7 @@ class GetUsersTablesService {
         userId: Number(userId),
       },
       orderBy: {
-        updatedAt: "asc",
+        nO: "asc",
       },
     });
 

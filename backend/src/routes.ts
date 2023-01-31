@@ -4,6 +4,7 @@ import { SignUpUserController } from "./controllers/AuthenticationControllers/Si
 import { CreateMenuSectionController } from "./controllers/MenuSectionControllers/CreateMenuSectionController";
 import { DeleteUsersMenuSectionController } from "./controllers/MenuSectionControllers/DeleteUsersMenuSectionController";
 import { GetUsersMenuSectionsController } from "./controllers/MenuSectionControllers/GetUsersMenuSectionsController";
+import { CreateTableController } from "./controllers/TablesControllers/CreateTableController";
 import { GetUsersTablesController } from "./controllers/TablesControllers/GetUsersTablesControllers";
 import { GetAllUsersController } from "./controllers/UserControllers/GetAllUsersController";
 import { GetCurrentUserController } from "./controllers/UserControllers/GetCurrentUserController";
@@ -56,6 +57,12 @@ router.get(
   "/tables",
   ensuereIsAuthenticated,
   new GetUsersTablesController().handle
+);
+
+router.post(
+  "/tables",
+  ensuereIsAuthenticated,
+  new CreateTableController().handle
 );
 
 export { router };
