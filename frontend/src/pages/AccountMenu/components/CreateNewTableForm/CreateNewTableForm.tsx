@@ -6,14 +6,20 @@ import {
   FormControl,
   FormLabel,
   HStack,
-  Input,
   PinInput,
   PinInputField,
   useDisclosure,
 } from "@chakra-ui/react";
 import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
+import { Table } from "../../AccountMenu";
+import { KeyedMutator } from "swr";
 
-const CreateNewTableForm: React.FC = () => {
+type CreateNewTableFormProps = {
+  mutateTables: KeyedMutator<Table[]>;
+};
+const CreateNewTableForm: React.FC<CreateNewTableFormProps> = ({
+  mutateTables,
+}) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (

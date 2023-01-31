@@ -9,13 +9,13 @@ import {
   DrawerCloseButton,
   Button,
 } from "@chakra-ui/react";
-import { TableItem } from "../../Tables";
 import { QrCode } from "../../../QrCode/QrCode";
+import { Table } from "../../../../AccountMenu";
 
 type TableDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
-  choosenItem?: TableItem;
+  choosenItem?: Table;
 };
 
 const TableDrawer: React.FC<TableDrawerProps> = ({

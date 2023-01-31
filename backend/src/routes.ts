@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { AuthenticateUserController } from "./controllers/AuthenticationControllers.ts/AuthenticateUserController";
-import { SignUpUserController } from "./controllers/AuthenticationControllers.ts/SignUpUserController";
+import { AuthenticateUserController } from "./controllers/AuthenticationControllers/AuthenticateUserController";
+import { SignUpUserController } from "./controllers/AuthenticationControllers/SignUpUserController";
 import { CreateMenuSectionController } from "./controllers/MenuSectionControllers/CreateMenuSectionController";
 import { DeleteUsersMenuSectionController } from "./controllers/MenuSectionControllers/DeleteUsersMenuSectionController";
 import { GetUsersMenuSectionsController } from "./controllers/MenuSectionControllers/GetUsersMenuSectionsController";
+import { GetUsersTablesController } from "./controllers/TablesControllers/GetUsersTablesControllers";
 import { GetAllUsersController } from "./controllers/UserControllers/GetAllUsersController";
 import { GetCurrentUserController } from "./controllers/UserControllers/GetCurrentUserController";
 import { UpdateUserByIdController } from "./controllers/UserControllers/UpdateUserController";
@@ -32,7 +33,6 @@ router.post("/signup", new SignUpUserController().handle);
 router.post("/signin", new AuthenticateUserController().handle);
 
 // MENU SECTION ROUTES
-
 router.post(
   "/menu-section",
   ensuereIsAuthenticated,
@@ -49,6 +49,13 @@ router.delete(
   "/menu-section/:id",
   ensuereIsAuthenticated,
   new DeleteUsersMenuSectionController().handle
+);
+
+// TABLES ROUTES
+router.get(
+  "/tables",
+  ensuereIsAuthenticated,
+  new GetUsersTablesController().handle
 );
 
 export { router };

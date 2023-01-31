@@ -9,13 +9,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { AUTHENTICATION_TOKEN } from "../../constants/localStorageKeys";
 import useSWR from "swr";
 import { fetchConfig } from "../../utils/fetchConfig/fetchConfig";
-import { MENU_SECTION } from "../../constants/apiEndpoints";
-
-const mockTables = [
-  { id: "1", nO: 1 },
-  { id: "2", nO: 2 },
-  { id: "3", nO: 3 },
-];
+import { MENU_SECTION, TABLES } from "../../constants/apiEndpoints";
 
 export type MenuSection = {
   id: number;
@@ -26,6 +20,13 @@ export type MenuSection = {
   menuItems: any[];
 };
 
+export type Table = {
+  id: number;
+  nO: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 const AccountMenu: React.FC = () => {
   const [authToken] = useLocalStorage(AUTHENTICATION_TOKEN, "");
 
@@ -33,6 +34,13 @@ const AccountMenu: React.FC = () => {
     `${process.env.REACT_APP_PUBLIC_URL}/${MENU_SECTION}`,
     fetchConfig(authToken),
   ]);
+
+  const { data: tableData, mutate: mutateTables } = useSWR<Table[]>([
+    `${process.env.REACT_APP_PUBLIC_URL}/${TABLES}`,
+    fetchConfig(authToken),
+  ]);
+
+  console.log(tableData);
 
   return (
     <Flex
@@ -51,8 +59,8 @@ const AccountMenu: React.FC = () => {
         contentHelper="This QrCode redirects to your menu products Download and make it visible for your clients."
         titleHelper="QrCode"
       />
-      <Tables tables={mockTables} />
-      <CreateNewTableForm />
+      <Tables tables={tableData} />
+      <CreateNewTableForm mutateTables={mutateTables}/>
     </Flex>
   );
 };

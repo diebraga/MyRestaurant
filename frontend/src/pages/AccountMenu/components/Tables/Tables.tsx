@@ -13,14 +13,11 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
+import { Table } from "../../AccountMenu";
 import { TableDrawer } from "./components/TableDrawer/TableDrawer";
 
-export type TableItem = {
-  id: string;
-  nO: number;
-};
 type TablesProps = {
-  tables?: TableItem[];
+  tables?: Table[];
 };
 
 const Tables: React.FC<TablesProps> = ({ tables }) => {

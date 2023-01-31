@@ -17,6 +17,7 @@ model User {
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
   sections  MenuSection[]
+  tables    Table[]
 }
 
 model MenuSection {
@@ -36,4 +37,13 @@ model MenuItem {
   updatedAt     DateTime     @updatedAt
   MenuSection   MenuSection? @relation(fields: [menuSectionId], references: [id])
   menuSectionId Int?
+}
+
+model Table {
+  id        Int      @id @default(autoincrement())
+  nO        Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
 }
