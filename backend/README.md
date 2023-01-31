@@ -8,4 +8,8 @@
 
 ## Get User Himself Route  
 #### Endpoint: "/user"
-#### Integrated with frontend []
+#### Integrated with frontend [X]
+
+## Create Menu Section Route  
+#### Endpoint: "/menu-section"
+#### Integrated with frontend [X]
