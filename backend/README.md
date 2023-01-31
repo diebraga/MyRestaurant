@@ -13,3 +13,7 @@
 ## Create Menu Section Route  
 #### Endpoint: "/menu-section"
 #### Integrated with frontend [X]
+
+## Get Users Menu Sections Route  
+#### Endpoint: "/menu-section"
+#### Integrated with frontend []

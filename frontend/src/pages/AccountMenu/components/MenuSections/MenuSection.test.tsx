@@ -4,15 +4,14 @@ import { MenuSections } from "./MenuSections";
 const sectionsMocks = [
   {
     id: "id",
-    title: "title",
-    quantity: 2,
+    name: "name",
   },
-];
+] as any[];
 
 it("Should render Menu Items when Array defined", () => {
   renderWithProvider(<MenuSections sections={sectionsMocks} />);
 
-  expect(screen.getByText(sectionsMocks[0].title)).toBeDefined();
+  expect(screen.getByText(sectionsMocks[0].name)).toBeDefined();
 });
 
 it("Should render create new section when array not defi ed", () => {

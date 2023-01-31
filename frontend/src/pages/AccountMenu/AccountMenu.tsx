@@ -5,12 +5,11 @@ import { CreateNewSectionForm } from "./components/CreateNewSectionForm/CreateNe
 import { MenuSections } from "./components/MenuSections/MenuSections";
 import { CreateNewTableForm } from "./components/CreateNewTableForm/CreateNewTableForm";
 import { Tables } from "./components/Tables/Tables";
-
-const mockMenuSections = [
-  { id: "1", title: "Foods", quantity: 2 },
-  { id: "2", title: "Drinks", quantity: 2 },
-  { id: "3", title: "Desserts", quantity: 2 },
-];
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { AUTHENTICATION_TOKEN } from "../../constants/localStorageKeys";
+import useSWR from "swr";
+import { fetchConfig } from "../../utils/fetchConfig/fetchConfig";
+import { MENU_SECTION } from "../../constants/apiEndpoints";
 
 const mockTables = [
   { id: "1", nO: 1 },
@@ -18,7 +17,23 @@ const mockTables = [
   { id: "3", nO: 3 },
 ];
 
+export type MenuSection = {
+  id: number;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: number;
+  menuItems: any[];
+};
+
 const AccountMenu: React.FC = () => {
+  const [authToken] = useLocalStorage(AUTHENTICATION_TOKEN, "");
+
+  const { data, error, mutate } = useSWR<MenuSection[]>([
+    `${process.env.REACT_APP_PUBLIC_URL}/${MENU_SECTION}`,
+    fetchConfig(authToken),
+  ]);
+
   return (
     <Flex
       flexDirection="column"
@@ -28,8 +43,8 @@ const AccountMenu: React.FC = () => {
       overflow="scroll"
       marginBottom="10"
     >
-      <MenuSections sections={mockMenuSections} />
-      <CreateNewSectionForm />
+      <MenuSections sections={data} />
+      <CreateNewSectionForm mutateMenuSection={mutate} />
       <QrCode
         value={"https://discord.com/"}
         buttonTitle="Show Menu's QrCode"

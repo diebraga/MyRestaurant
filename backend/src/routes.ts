@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AuthenticateUserController } from "./controllers/AuthenticationControllers.ts/AuthenticateUserController";
 import { SignUpUserController } from "./controllers/AuthenticationControllers.ts/SignUpUserController";
 import { CreateMenuSectionController } from "./controllers/MenuSectionControllers/CreateMenuSectionController";
+import { GetUsersMenuSectionsController } from "./controllers/MenuSectionControllers/GetUsersMenuSectionsController";
 import { GetAllUsersController } from "./controllers/UserControllers/GetAllUsersController";
 import { GetCurrentUserController } from "./controllers/UserControllers/GetCurrentUserController";
 import { UpdateUserByIdController } from "./controllers/UserControllers/UpdateUserController";
@@ -35,6 +36,12 @@ router.post(
   "/menu-section",
   ensuereIsAuthenticated,
   new CreateMenuSectionController().handle
+);
+
+router.get(
+  "/menu-section",
+  ensuereIsAuthenticated,
+  new GetUsersMenuSectionsController().handle
 );
 
 export { router };

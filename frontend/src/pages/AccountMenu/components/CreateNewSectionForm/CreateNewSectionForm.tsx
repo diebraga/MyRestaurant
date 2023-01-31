@@ -20,12 +20,20 @@ import {
 } from "../../../../constants/errorMessages";
 import { AUTHENTICATION_TOKEN } from "../../../../constants/localStorageKeys";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
+import { KeyedMutator } from "swr";
+import { MenuSection } from "../../AccountMenu";
 
 type Inputs = {
   name: string;
 };
 
-const CreateNewSectionForm: React.FC = () => {
+type CreateNewSectionFormProps = {
+  mutateMenuSection: KeyedMutator<MenuSection[]>;
+};
+
+const CreateNewSectionForm: React.FC<CreateNewSectionFormProps> = ({
+  mutateMenuSection,
+}) => {
   const [authToken] = useLocalStorage(AUTHENTICATION_TOKEN, "");
 
   const { isOpen, onToggle } = useDisclosure();
@@ -33,7 +41,7 @@ const CreateNewSectionForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    reset
+    reset,
   } = useForm<Inputs>();
 
   const toast = useToast();
@@ -70,8 +78,21 @@ const CreateNewSectionForm: React.FC = () => {
         duration: 9000,
         isClosable: true,
       });
-      reset()
-      onToggle()
+      mutateMenuSection(
+        (prev) => [
+          ...(prev as any[]),
+          {
+            ...formattedData,
+            id: Math.floor(Math.random() * 1000000000),
+            menuItems: [],
+          },
+        ],
+        {
+          revalidate: false,
+        }
+      );
+      reset();
+      onToggle();
     } else {
       toast({
         title: ERROR_TITLE,

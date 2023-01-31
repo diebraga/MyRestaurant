@@ -51,7 +51,7 @@ const SignIn: React.FC = () => {
       console.log(resJson);
       if (resJson.token) {
         setToken(resJson.token);
-        navigate(`/${ACCOUNT_PAGE}?id=${resJson.id}`);
+        navigate(`/${ACCOUNT_PAGE}`);
       }
     } catch (error) {
       console.log(error);

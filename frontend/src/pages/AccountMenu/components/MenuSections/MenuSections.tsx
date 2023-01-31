@@ -12,13 +12,10 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
+import { MenuSection } from "../../AccountMenu";
 
 type MenuSectionsProps = {
-  sections?: {
-    id: string;
-    title: string;
-    quantity: number;
-  }[];
+  sections?: MenuSection[];
 };
 
 const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
@@ -42,10 +39,10 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
               return (
                 <Box height="100%" as={Link} key={item.id}>
                   <Heading size="xs" textTransform="uppercase">
-                    {item.title}
+                    {item.name}
                   </Heading>
                   <Text pt="2" fontSize="sm">
-                    {item.quantity} Items
+                    {item.menuItems.length} Items
                   </Text>
                 </Box>
               );
