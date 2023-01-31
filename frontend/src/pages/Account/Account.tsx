@@ -15,20 +15,25 @@ import useSWR from "swr";
 import { useSearchParams } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { AUTHENTICATION_TOKEN } from "../../constants/localStorageKeys";
-import { USER, USERS } from "../../constants/apiEndpoints";
+import { USER } from "../../constants/apiEndpoints";
 import { fetchConfig } from "../../utils/fetchConfig/fetchConfig";
+
+type UserType = {
+  id: number;
+  name: string;
+  email: string;
+};
 
 const Account: React.FC = () => {
   const [authToken] = useLocalStorage(AUTHENTICATION_TOKEN, "");
   const [searchParams] = useSearchParams();
   const userId = searchParams.get("id");
 
-  const { data, error } = useSWR(
+  const { data, error } = useSWR<UserType>(
     userId
       ? [`${process.env.REACT_APP_PUBLIC_URL}/${USER}`, fetchConfig(authToken)]
       : null
   );
-  console.log(data);
   const [isEdittingName, setIsEdittingName] = useState(false);
   const inputFile = useRef<HTMLInputElement>(null);
 
@@ -84,10 +89,10 @@ const Account: React.FC = () => {
         ref={inputFile}
         onChange={(e) => handleImgPreview(e)}
       />
-      <ImageProfile name="Tel Aviv" onClick={openFileInput} src={src} />
+      <ImageProfile name={data?.name} onClick={openFileInput} src={src} />
       <InputGroup>
         <Input
-          defaultValue="Tel Aviv"
+          defaultValue={data?.name}
           fontSize={["3xl"]}
           verticalAlign="middle"
           textAlign="center"

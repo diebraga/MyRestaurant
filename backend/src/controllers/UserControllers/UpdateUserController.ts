@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { UpdateUserByIdService } from '../services/UpdateUserByIdService'
-import { GetUserByIdService } from '../services/GetUserByIdService'
+import { GetUserByIdService } from '../../services/UserServices/GetUserByIdService'
+import { UpdateUserByIdService } from '../../services/UserServices/UpdateUserByIdService'
 
 class UpdateUserByIdController {
   async handle(request: Request, response: Response) {

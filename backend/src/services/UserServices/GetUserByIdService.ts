@@ -1,4 +1,4 @@
-import prismaClient from "../lib";
+import prismaClient from "../../lib";
 
 class GetUserByIdService {
   async execute(user_id: number) {

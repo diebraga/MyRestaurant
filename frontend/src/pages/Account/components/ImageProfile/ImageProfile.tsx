@@ -4,10 +4,10 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Camera } from "phosphor-react";
-import React, {  } from "react";
+import React from "react";
 
 type ImageProfileProps = {
-  name: string;
+  name?: string;
   onClick?: () => void;
   src?: string;
 };

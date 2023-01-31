@@ -1,22 +1,19 @@
 import { Router } from "express";
-import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
-import { DeleteUserByIdController } from "./controllers/DeleteUserByIdController";
-import { GetAllUsersController } from "./controllers/GetAllUsersController";
-import { GetUserByIdController } from "./controllers/GetUserByIdController";
-import { UpdateUserByIdController } from "./controllers/UpdateUserController";
+import { AuthenticateUserController } from "./controllers/AuthenticationControllers.ts/AuthenticateUserController";
+import { SignUpUserController } from "./controllers/AuthenticationControllers.ts/SignUpUserController";
+import { GetAllUsersController } from "./controllers/UserControllers/GetAllUsersController";
+import { GetCurrentUserController } from "./controllers/UserControllers/GetCurrentUserController";
+import { UpdateUserByIdController } from "./controllers/UserControllers/UpdateUserController";
 import { ensuereIsAuthenticated } from "./middleware/ensureUserIsAuthenticated";
-import { SignUpUserController } from "./controllers/SignUpUserController";
-import { GetCurrentUserController } from "./controllers/GetCurrentUserController";
 
 const router = Router();
 
+// USERS ROUTES
 router.get(
   "/user",
   ensuereIsAuthenticated,
   new GetCurrentUserController().handle
 );
-
-// router.delete('/users/:id',ensuereIsAuthenticated,  new DeleteUserByIdController().handle)
 
 router.get("/users", new GetAllUsersController().handle);
 
@@ -26,6 +23,8 @@ router.put(
   new UpdateUserByIdController().handle
 );
 
+
+// AUTHENTICATION ROUTES
 router.post("/signup", new SignUpUserController().handle);
 
 router.post("/signin", new AuthenticateUserController().handle);

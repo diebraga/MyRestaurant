@@ -1,6 +1,6 @@
-import prismaClient from "../lib";
 import { hash } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import prismaClient from '../../lib'
 
 interface UserInterface {
   id?: number
