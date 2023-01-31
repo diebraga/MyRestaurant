@@ -9,13 +9,13 @@ import {
 } from "@chakra-ui/react";
 import { Check } from "phosphor-react";
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { AceptImageAlert } from "./components/AceptImageAlert/AceptImageAlert";
 import { ImageProfile } from "./components/ImageProfile/ImageProfile";
 import useSWR from "swr";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { AUTHENTICATION_TOKEN } from "../../constants/localStorageKeys";
 import { USER } from "../../constants/apiEndpoints";
 import { fetchConfig } from "../../utils/fetchConfig/fetchConfig";
+import { Alert } from "../../components/Alert/Alert";
 
 type UserType = {
   id: number;
@@ -75,10 +75,14 @@ const Account: React.FC = () => {
       paddingX="4"
       marginTop="90px"
     >
-      <AceptImageAlert
+      <Alert
         isOpen={isOpen}
-        onClose={onCloseEditPicture}
-        onAccept={onClose}
+        onLeftClick={onCloseEditPicture}
+        onRightClick={onClose}
+        bodyText="Would you like to change you profile image?"
+        headerText="Save changes"
+        textLeftButton="Disable"
+        textRightButton="Delete"
       />
       <VisuallyHiddenInput
         type="file"

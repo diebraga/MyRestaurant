@@ -16,4 +16,8 @@
 
 ## Get Users Menu Sections Route  
 #### Endpoint: "/menu-section"
+#### Integrated with frontend [X]
+
+## Delete Users Menu Sections Route  
+#### Endpoint: "/menu-section/:id"
 #### Integrated with frontend []

@@ -17,7 +17,7 @@ import {
   SUCCESS_TITLE,
   UNAUTHORIZED_ERROR,
   UNKWON_ERROR,
-} from "../../../../constants/errorMessages";
+} from "../../../../constants/toastMessages";
 import { AUTHENTICATION_TOKEN } from "../../../../constants/localStorageKeys";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage";
 import { KeyedMutator } from "swr";

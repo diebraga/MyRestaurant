@@ -9,15 +9,23 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-type AceptImageAlertProps = {
-  onClose: () => void;
+type AlertProps = {
+  onLeftClick: () => void;
   isOpen: boolean;
-  onAccept: () => void;
+  onRightClick: () => void;
+  headerText?: string;
+  bodyText: string
+  textLeftButton: string
+  textRightButton: string
 };
-const AceptImageAlert: React.FC<AceptImageAlertProps> = ({
-  onClose,
+const Alert: React.FC<AlertProps> = ({
+  onLeftClick,
   isOpen,
-  onAccept
+  onRightClick,
+  headerText,
+  bodyText,
+  textLeftButton,
+  textRightButton
 }) => {
   const cancelRef = React.useRef<any>();
 
@@ -25,28 +33,27 @@ const AceptImageAlert: React.FC<AceptImageAlertProps> = ({
     <AlertDialog
       motionPreset="slideInBottom"
       leastDestructiveRef={cancelRef}
-      onClose={onClose}
+      onClose={onRightClick}
       isOpen={isOpen}
       isCentered
     >
       <AlertDialogContent>
-        <AlertDialogHeader>Save changes</AlertDialogHeader>
+        <AlertDialogHeader>{headerText}</AlertDialogHeader>
         <AlertDialogCloseButton />
         <AlertDialogBody>
-          Would you like to change you profile image?.
+          {bodyText}
         </AlertDialogBody>
         <AlertDialogFooter>
           <Button
-            ref={cancelRef}
-            onClick={onClose}
+            onClick={onLeftClick}
             variant="outline"
             colorScheme="darkText"
             marginRight="3"
           >
-            No
+            {textLeftButton}
           </Button>
-          <Button variant="outline" colorScheme="darkText" onClick={onAccept}>
-            Yes
+          <Button variant="outline" colorScheme="darkText" onClick={onRightClick}>
+            {textRightButton}
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -54,4 +61,4 @@ const AceptImageAlert: React.FC<AceptImageAlertProps> = ({
   );
 };
 
-export { AceptImageAlert };
+export { Alert };

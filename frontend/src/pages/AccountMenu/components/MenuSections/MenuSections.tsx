@@ -12,9 +12,10 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
 import { MenuSection } from "../../AccountMenu";
-import { MenuSectionDrawer } from "./MenuSectionDrawer/MenuSectionDrawer";
+import { MenuSectionDrawer } from "./components/MenuSectionDrawer/MenuSectionDrawer";
 
 type MenuSectionsProps = {
   sections?: MenuSection[];
@@ -22,6 +23,12 @@ type MenuSectionsProps = {
 
 const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [, setSearchParams] = useSearchParams();
+
+  const onClickItem = (id: number, index: number) => {
+    onOpen();
+    setSearchParams(`?sectionId=${id}&sectionIndex=${index}`);
+  };
 
   return (
     <Card width="100%" colorScheme="darkText">
@@ -39,9 +46,14 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
           {sections && sections?.length > 0 ? (
-            sections?.map((item) => {
+            sections?.map((item, index) => {
               return (
-                <Box height="100%" as={Link} key={item.id} onClick={onOpen}>
+                <Box
+                  height="100%"
+                  as={Link}
+                  key={item.id}
+                  onClick={() => onClickItem(item.id, index)}
+                >
                   <Heading size="xs" textTransform="uppercase">
                     {item.name}
                   </Heading>

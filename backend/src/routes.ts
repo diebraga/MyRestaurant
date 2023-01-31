@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AuthenticateUserController } from "./controllers/AuthenticationControllers.ts/AuthenticateUserController";
 import { SignUpUserController } from "./controllers/AuthenticationControllers.ts/SignUpUserController";
 import { CreateMenuSectionController } from "./controllers/MenuSectionControllers/CreateMenuSectionController";
+import { DeleteUsersMenuSectionController } from "./controllers/MenuSectionControllers/DeleteUsersMenuSectionController";
 import { GetUsersMenuSectionsController } from "./controllers/MenuSectionControllers/GetUsersMenuSectionsController";
 import { GetAllUsersController } from "./controllers/UserControllers/GetAllUsersController";
 import { GetCurrentUserController } from "./controllers/UserControllers/GetCurrentUserController";
@@ -42,6 +43,12 @@ router.get(
   "/menu-section",
   ensuereIsAuthenticated,
   new GetUsersMenuSectionsController().handle
+);
+
+router.delete(
+  "/menu-section/:id",
+  ensuereIsAuthenticated,
+  new DeleteUsersMenuSectionController().handle
 );
 
 export { router };
