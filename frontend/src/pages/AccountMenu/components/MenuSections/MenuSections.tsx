@@ -9,16 +9,20 @@ import {
   Box,
   Link,
   Flex,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
 import { HelperInfo } from "../../../../components/HelperInfo/HelperInfo";
 import { MenuSection } from "../../AccountMenu";
+import { MenuSectionDrawer } from "./MenuSectionDrawer/MenuSectionDrawer";
 
 type MenuSectionsProps = {
   sections?: MenuSection[];
 };
 
 const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Card width="100%" colorScheme="darkText">
       <CardHeader paddingY={0} paddingTop={2}>
@@ -31,13 +35,13 @@ const MenuSections: React.FC<MenuSectionsProps> = ({ sections }) => {
           />
         </Flex>
       </CardHeader>
-
+      <MenuSectionDrawer isOpen={isOpen} onClose={onClose} />
       <CardBody>
         <Stack divider={<StackDivider />} spacing="4">
           {sections && sections?.length > 0 ? (
             sections?.map((item) => {
               return (
-                <Box height="100%" as={Link} key={item.id}>
+                <Box height="100%" as={Link} key={item.id} onClick={onOpen}>
                   <Heading size="xs" textTransform="uppercase">
                     {item.name}
                   </Heading>

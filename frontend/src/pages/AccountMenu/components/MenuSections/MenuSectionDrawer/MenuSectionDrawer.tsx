@@ -9,36 +9,24 @@ import {
   DrawerCloseButton,
   Button,
 } from "@chakra-ui/react";
-import { TableItem } from "../../Tables";
-import { QrCode } from "../../../QrCode/QrCode";
 
-type TableDrawerProps = {
+export type MenuSectionDrawerProps = {
   isOpen: boolean;
   onClose: () => void;
-  choosenItem?: TableItem;
 };
-
-const TableDrawer: React.FC<TableDrawerProps> = ({
-  isOpen,
-  onClose,
-  choosenItem,
-}) => {
+const MenuSectionDrawer: React.FC<MenuSectionDrawerProps> = ({ isOpen, onClose }) => {
   return (
     <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
       <DrawerOverlay />
       <DrawerContent>
         <DrawerCloseButton />
-        <DrawerHeader>Table No. {choosenItem?.nO}</DrawerHeader>
+        <DrawerHeader>Menu section items</DrawerHeader>
 
         <DrawerBody>
-          <QrCode
-            buttonTitle="Show table's QrCode"
-            value={`https://www.youtube.com?table=${choosenItem?.nO}/`}
-            titleHelper="QrCode"
-            contentHelper={`Table ${choosenItem?.nO} QrCode`}
-          />
+
         </DrawerBody>
 
+        <DrawerFooter>
         <DrawerFooter>
           <Button
             mr={3}
@@ -52,9 +40,10 @@ const TableDrawer: React.FC<TableDrawerProps> = ({
             Delete
           </Button>
         </DrawerFooter>
+        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );
 };
 
-export { TableDrawer };
+export { MenuSectionDrawer };
