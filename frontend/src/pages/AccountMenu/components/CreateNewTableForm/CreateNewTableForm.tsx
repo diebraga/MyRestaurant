@@ -22,6 +22,7 @@ import {
   CREATED_SUCCESSFULLY,
   ERROR_TITLE,
   SUCCESS_TITLE,
+  TABLE_ID,
   UNAUTHORIZED_ERROR,
   UNKWON_ERROR,
 } from "../../../../constants/toastMessages";
@@ -51,59 +52,73 @@ const CreateNewTableForm: React.FC<CreateNewTableFormProps> = ({
   const [authToken] = useLocalStorage(AUTHENTICATION_TOKEN, "");
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const response = await fetch(
-      `${process.env.REACT_APP_PUBLIC_URL}/${TABLES}`,
+    mutateTables(
+      async (prev) => {
+        const nO = data.input1 + data.input2 + data.input3;
+        if (prev && prev.find((item) => Number(item.nO) === Number(nO))) {
+          toast({
+            title: ERROR_TITLE,
+            description: TABLE_ID,
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
+          return [...prev];
+        } else {
+          toast({
+            title: SUCCESS_TITLE,
+            description: CREATED_SUCCESSFULLY,
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+          reset();
+          onToggle();
+          const response = await fetch(
+            `${process.env.REACT_APP_PUBLIC_URL}/${TABLES}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${authToken}`,
+              },
+              body: JSON.stringify({
+                nO:
+                  (data.input1 || 0) + (data.input2 || 0) + (data.input3 || 0),
+              }),
+            }
+          );
+          const resJson = await response.json();
+          if (resJson.errorCode === "invalid token") {
+            toast({
+              title: ERROR_TITLE,
+              description: UNAUTHORIZED_ERROR,
+              status: "error",
+              duration: 9000,
+              isClosable: true,
+            });
+          } else if (!resJson.id) {
+            toast({
+              title: ERROR_TITLE,
+              description: UNKWON_ERROR,
+              status: "error",
+              duration: 9000,
+              isClosable: true,
+            });
+          }
+          return [
+            ...(prev as any[]),
+            {
+              id: Math.floor(Math.random() * 1000000000),
+              nO: data.input1 + data.input2 + data.input3,
+            },
+          ];
+        }
+      },
       {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${authToken}`,
-        },
-        body: JSON.stringify({
-          nO: (data.input1 || 0) + (data.input2 || 0) + (data.input3 || 0),
-        }),
+        revalidate: false,
       }
     );
-    const resJson = await response.json();
-    if (resJson.errorCode === "invalid token") {
-      toast({
-        title: ERROR_TITLE,
-        description: UNAUTHORIZED_ERROR,
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
-    } else if (resJson.id) {
-      toast({
-        title: SUCCESS_TITLE,
-        description: CREATED_SUCCESSFULLY,
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      });
-      mutateTables(
-        (prev) => [
-          ...(prev as any[]),
-          {
-            id: Math.floor(Math.random() * 1000000000),
-            nO: data.input1 + data.input2 + data.input3,
-          },
-        ],
-        {
-          revalidate: false,
-        }
-      );
-      reset();
-      onToggle();
-    } else {
-      toast({
-        title: ERROR_TITLE,
-        description: UNKWON_ERROR,
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
-    }
   };
   const { isOpen, onToggle } = useDisclosure();
 
@@ -152,6 +167,7 @@ const CreateNewTableForm: React.FC<CreateNewTableFormProps> = ({
             colorScheme="darkText"
             marginY="3"
             type="submit"
+            isLoading={isSubmitting}
           >
             Save
           </Button>
