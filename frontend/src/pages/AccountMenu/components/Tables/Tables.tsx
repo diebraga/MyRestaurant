@@ -23,10 +23,12 @@ type TablesProps = {
 const Tables: React.FC<TablesProps> = ({ tables }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [tableIndex, setTableIndex] = useState(0);
+  const [tableId, setTableId] = useState(0);
 
-  const onClickTable = (index: number) => {
+  const onClickTable = (index: number, id: number) => {
     setTableIndex(index);
     onOpen();
+    setTableId(id);
   };
   return (
     <Card width="100%" colorScheme="darkText">
@@ -46,7 +48,7 @@ const Tables: React.FC<TablesProps> = ({ tables }) => {
                   height="100%"
                   as={Link}
                   key={item.id}
-                  onClick={() => onClickTable(index)}
+                  onClick={() => onClickTable(index, item.id)}
                 >
                   <Heading size="xs" textTransform="uppercase">
                     Table
@@ -68,6 +70,7 @@ const Tables: React.FC<TablesProps> = ({ tables }) => {
         isOpen={isOpen}
         onClose={onClose}
         choosenItem={tables?.[tableIndex]}
+        tableId={tableId}
       />
     </Card>
   );

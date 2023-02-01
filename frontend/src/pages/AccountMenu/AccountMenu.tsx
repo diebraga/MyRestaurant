@@ -40,8 +40,6 @@ const AccountMenu: React.FC = () => {
     fetchConfig(authToken),
   ]);
 
-  console.log(tableData);
-
   return (
     <Flex
       flexDirection="column"

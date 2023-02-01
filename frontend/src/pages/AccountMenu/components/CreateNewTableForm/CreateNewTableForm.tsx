@@ -65,7 +65,6 @@ const CreateNewTableForm: React.FC<CreateNewTableFormProps> = ({
       }
     );
     const resJson = await response.json();
-    console.log(resJson);
     if (resJson.errorCode === "invalid token") {
       toast({
         title: ERROR_TITLE,

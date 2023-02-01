@@ -29,3 +29,7 @@
 ## Create Users Tables Route
 #### Endpoint: "/tables"
 #### Integrated with frontend [X]
+
+## Delete Users Tables Route
+#### Endpoint: "/tables"
+#### Integrated with frontend []
